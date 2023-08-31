@@ -12,6 +12,11 @@
     * [Automata Theory](#automata-theory)
     * [Computability Theory](#computability-theory)
   * [Mathematical Notions](#mathematical-notions)
+* [Lecture 2](#lecture-2)
+  * [Definitions](#definitions)
+  * [Basic Proof Syntax](#basic-proof-syntax)
+    * [Types of proofs](#types-of-proofs)
+  * [Proof Examples](#proof-examples)
 
 ## Quotes
 
@@ -19,6 +24,12 @@
 * "That is a provocative question"
 * "We don't know why boys have awful handwriting. Its almost as fascinating as why there are no few women in computer science"
 * "I get depressed when I am wrong"
+* "Let's talk about pencils"
+* "There are no Jews here?"
+  * "The word is Ongaloza"
+* "I'm going to die early"
+* "I was the major suck up back in Catholic school"
+  * He would clap chalkboard erasors
 
 ## Lecture 1
 
@@ -205,3 +216,166 @@ i - j = p\*7, j - k -  q\*7
 (i-k) = 7(p+q)  so (i-k) is a multiple of 7
 
 Since eq7 is reflexive, symmetric, and transitive, eq7 is an equivalence relation
+
+## Lecture 2
+
+Assignment due a week from today (Thursday):
+
+* In class, or during office hours
+
+### Definitions
+
+* Definition
+  * Precise description of the objects and notions in use
+  * The words describing $eq_{7}$ constitute a definition
+* Mathematical Statement
+  * Some object has a certain property. The statement may or may not be true, but it **MUST** be unambiguous
+* Proof
+  * A convincing logical argument
+  * Law: beyond reasonable doubt
+  * Mathematic: beyond any doubt
+* Theorem
+  * Mathematical statement that has been proved to be true
+* Lemma
+  * A mathematical statement proved try that is helpful in the proof of a more significant statement
+    * in the language of computing - a subroutine
+* Corollary
+  * A mathematical statement easily concluded from a theorem
+* Equivalent Conditionals
+  * Let P and Q be mathematical statements where P is the hypothesis and Q is the conclusion. These expressions mean the same thing
+    * P implies Q
+    * P $\implies$ Q
+    * if P then Q
+    * Q only if P
+    * Q if P
+
+### Basic Proof Syntax
+
+$$
+P,Q\newline
+P \implies Q\newline
+if\ P\ then\ Q\newline
+Q\ only\ if\ Q\newline
+Q\ if\ P\newline
+P \implies Q\newline
+$$
+P | Q | $P\implies Q$ | P=Q
+--|---|---------------|----
+F | F | T             | T
+F | T | T             | F
+T | F | F             | F
+T | T | T             | T
+
+$$
+Suppose:\newline
+P \implies Q\newline
+Q \implies P\newline
+(P \implies Q) \not = (Q \implies P)
+$$
+P | Q | $P\implies Q$ | $Q=P$ | $(p \implies q) = (q \implies p)$
+--|---|---------------|-------|----------------------------------
+F | F | T             | T     | T
+F | T | T             | F     | F
+T | F | F             | T     | F
+T | T | T             | T     | T
+
+* $P \implies Q$
+* $\neg Q \implies \neg P$ (Contrapositive)
+* $P \iff Q$
+  * $P \implies Q \And Q \implies P$
+    * (P implies Q and Q implies P)
+
+#### Types of proofs
+* iff (if an only if) $\iff$
+* Cntradiction
+* PmI
+* Constructim
+
+### Proof Examples
+
+1. iff
+
+Theorem: For any two Sets, A, B, complement of A union b implies com A n com B
+
+this is an attempt at latex. I was not fast enough so i am now just formatting it
+
+```latex
+pf
+suppose X is not ian element of A union B
+
+Step 1: $\bar{A u\ B} \implies \bar A n \bar b$
+by def of comploment, X is not in A u B
+x is in $\bar A$ and x is in $\bar b$
+
+by def of intersection
+x is in $\bar A$ intersects $\bar b$
+which is what we want to show
+
+Step 2
+not A n not b om,plies not(a u b)
+suppose x is in not a n not b, then
+    x is in not a
+    x is in not b
+    -> def of intersection
+then x is not in a u b
+by def of complement
+    x is in not (a u b)
+    which proves step 2
+
+since step 1 and step 2, we prove the theorem
+```
+
+```latex
+Proof B: by contradiction
+assume that the thing you are proving is false, then you draw a series of correct implications, it will lead to a complication (something that is not true)
+
+Theorem:
+\sqrt{2} is irrational
+
+(rational number means a number that can be represented as a ratio of two integers (1:2, 5:100, etc), irrational is just not that)
+(lemma is a subroutine, something that is easy to prove and be used inside a larger proof)
+
+Lemma-
+    if p^2 is an even integer, p is an even integer
+    pf.
+        p^2 is p*p
+        since p^2 is even, there exists (backwards E) some L such that (S.T):
+            (p^2)/2 = L
+            p*p = 2L
+            L = p*p)/2
+            L is even
+
+
+root 2 is irrational
+    assume root 2 is rational
+    then root 2 = m/n where m, n , are integers
+    let k = gcd(m,n) <- greatest common divisor
+        (m/k)/(n/k) = m/n
+        let \frac{m}{k} = p
+        \frac{n}{k} = q
+        \sqrt{2} = \frac{m}{n} = \frac{p}{q}
+        at least one of P, Q is odd
+            (sub proof)
+            Suppose both P, Q are even 
+            \frac{m}{k} = p = 2*R
+            \frac{n}{k} = q = 2*T
+            -----
+            So m,n would have 2k as gcd, contradicting our assumption that k is the gcd
+
+    \sqrt 2 = m/n = p/q
+    sqrt(2) q = p
+        A. 2q^2 = p^2
+        \implies p^2 is even! (divisible by 2)
+        -> p is even by the Lemma
+        since p is even, it may be written p = 2R
+
+    2q^2 = p^2
+    2q^2 = 4R^2
+    q^2 - 2R^2
+    q^2 is even
+    -> q is even
+    Both q and p are even
+        but we have already shown that at least one of the two is odd       
+    (contradiction!)
+Assumption that \sqrt 2 is rational led to a contradiction, so \sqrt 2 is irrational
+```
