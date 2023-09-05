@@ -16,7 +16,13 @@
   * [Definitions](#definitions)
   * [Basic Proof Syntax](#basic-proof-syntax)
     * [Types of proofs](#types-of-proofs)
-  * [Proof Examples](#proof-examples)
+  * [Proof by IFF](#proof-by-iff)
+  * [Proof by contradiction](#proof-by-contradiction)
+* [Lecture 3](#lecture-3)
+  * [Proof by construction](#proof-by-construction)
+  * [Proof by Mathematical Induction](#proof-by-mathematical-induction)
+  * [Theory of Computation (intro)](#theory-of-computation-intro)
+  * [Finite State Automata (FSA)](#finite-state-automata-fsa)
 
 ## Quotes
 
@@ -30,6 +36,11 @@
 * "I'm going to die early"
 * "I was the major suck up back in Catholic school"
   * He would clap chalkboard erasors
+* "Mexicans eat early"
+  * "Happy hour starts at 3"
+* Dominic... You know what i mean?
+  * 'i can read'
+* "Where is he now? dead"
 
 ## Lecture 1
 
@@ -149,7 +160,7 @@ Given a Turing Machine:
 * How do you characterize complexity: Big O Notation
 * How do you classify difficult problems
 
-**This course is overwhelmingly about automata theory with an excursion into computability theory**
+This course is overwhelmingly about automata theory with an excursion into computability theory
 
 ### Mathematical Notions
 
@@ -286,14 +297,13 @@ T | T | T             | T     | T
     * (P implies Q and Q implies P)
 
 #### Types of proofs
+
 * iff (if an only if) $\iff$
-* Cntradiction
+* Contradiction
 * PmI
-* Constructim
+* Construction
 
-### Proof Examples
-
-1. iff
+### Proof by IFF
 
 Theorem: For any two Sets, A, B, complement of A union b implies com A n com B
 
@@ -325,8 +335,9 @@ by def of complement
 since step 1 and step 2, we prove the theorem
 ```
 
+### Proof by contradiction
+
 ```latex
-Proof B: by contradiction
 assume that the thing you are proving is false, then you draw a series of correct implications, it will lead to a complication (something that is not true)
 
 Theorem:
@@ -379,3 +390,147 @@ root 2 is irrational
     (contradiction!)
 Assumption that \sqrt 2 is rational led to a contradiction, so \sqrt 2 is irrational
 ```
+
+## Lecture 3
+
+Little quiz on Thursday
+
+### Proof by construction
+
+By some theorem, it asserts that some object exists
+the proof is a step by step instruction for how to actually define this project
+This type of proof is very rare
+
+e.g.
+
+```latex
+Def: A graph is k-regular if every vertex in the graph has k edges (degree k)
+Theorem: Let n be the number of vertices in a graph; for every n>2, there exists a 3-regular graph
+
+constL:
+1. Draw a circle
+2. Distribute vertices evenly about the circle
+3. Draw edges between adjacent vertices -> yields 2 edges per node
+4. Draw edges between opposite vertices -> yields an additional edge
+
+step 3:
+a = the edges between v
+a = {(i, i + 1) for 0 <= i <= n-2 U (n-1, 0)}
+    (these are a set of tuples, and they contain these vertices that contain vertex a and vertex b, representing the line)
+
+step 4:
+b = the edges between opposite vertices 
+b = {(i, i + floor(n/2)) for 0 <= i <= floor(n/2) - 1}
+```
+
+### Proof by Mathematical Induction
+
+* Why do we do this?
+  * When working with an infinite set
+* two parts: base case, and induction/hypothesis
+  * we want to make a close-form formula that proves an infinite set
+* we make this induction hypothesis, similarly to dominos
+* true for k, and true for k + 1
+
+```latex
+Loan 
+I > 0 : annual interest rate
+P: principal (amount you have borrowed)
+m: multiplier (amount by which the loan changes each month)
+
+m = 1 + (I/12)
+y: Monthly payment
+
+Let 
+I = 12%
+P_{t}: amt of loan outstanding after t months
+(we can see that this is an recurrance relationship)
+P_{0} = P
+P_{1} = P_{0} * m - y
+
+Let P_{0} = 100000
+P_{1} = 100000 * (1 + (0.12/12)) - y
+      = 100000 * 1.01 - y
+----
+P_{0} = P
+P_{1} = P_{0} * m - y
+P_{2} = P_{1} * m - y
+P_{k+1} = P_{k} * m - y
+
+Theorem: 
+for all t >= 0 
+P_{t} = P*m^{t}-y((m^{t}-1)/(m-1))
+
+Basis:
+P_{0}   = P*m^{0}-y((m^{0}-1)/(m-1))
+        = P 
+Induction Step:
+for each k >= 1, assume the formula is true for t=k;
+P_{k}   = P*m^{k}-y((m^{k}-1)/(m-1))
+show that this implies 
+P_{k+1} = P*m^{k+1}-y((m^{k+1}-1)/(m-1))
+
+We know P_{k} by assumption
+P_{k+1} = [P*m^{k}-y((m^{k}-1)/(m-1))]*m-y
+        = P*m^{k+1}-y((m^{k+1}-m)/(m-1)-y 
+        [use ((m-1)/(m-1)) as a common denom]
+        = P*m^{k+1}-y((m^{k+1}-m+m-1)/m-1)
+        = P*m^{k+1}-y((m^{k+1}-1)/m-1)
+        = what we wanted to show!
+```
+
+### Theory of Computation (intro)
+
+Alphabet: non-empty finite set of symbols {0,1}
+Sequence: list of objects in some order
+String (over an alphabet): finite sequence of symbols drawn from some alphabet
+Empty string: a string of length 0 (sometimes written as an epsilon, mostly written as lambda)
+Reverse: if S is a string S^{r} is its reverse:
+    S = 01011
+    S^{r} = 11010
+Concatonation: if x is a string of length m, |x| = m, y is a string of length n, |y| = n, xy is the string of length n+m obtained by appending y to the tail of x.
+    x=0101
+    y=11
+    xy=010111
+String exponentiation: x is a string, x^{k} is the string obtained by appending x to itself k times
+Lexicographic order: "dictionary order"
+ShortLex (string order): length within a lexicographic order
+    E_{1} = {0,1}
+    Shortlex: {0, 1, 00, 01, 10, 11, 000, ...}
+Prefix: x is a string. it is a prefix if z (a string) exists such that xz = y where x, y, z are strings.
+    y = 0101
+    x = 0
+    z = 101
+    (x is a prefix of y)
+Language: set of strings
+
+### Finite State Automata (FSA)
+
+These are very abstract devices
+
+Imagine there is a door, and a pad to go in, and out.
+the store will behave differently depending on which pad they go in.
+we want to model that door
+front pad detects a person and opens the door
+back door holds an already open door
+
+FSA has two states:
+1. Closed State
+2. Open State
+
+Detects Signals:
+* R
+  * Something on the rear pad
+* F
+  * Something on the front pad
+* B
+  * Something on both the front and rear pads
+* N
+  * Nothing on either the front or rear pads
+
+Closed:
+* stays closed in R, B, N
+* opens in F
+Open:
+* stays open in F, R, B
+* closes on N
