@@ -1,0 +1,188 @@
+\documentclass{article}
+\usepackage{amssymb}
+
+\title{Project 1}
+\author{Jesse Adams, Dominic Orsi, Ben Puryear}
+\date{September 7th, 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Write a short, informal English description for this set: \{1,3,5,7, …,\}.}
+\begin{center}
+	The set \{1,3,5,7,...,\} contains all positive odd integers.
+\end{center}
+
+\section{Write a formal description of this set: The set containing all integers that are greater than 5.}
+\begin{center}
+	$\{x \in \mathbb{Z} | x \ge 5 \}$
+\end{center}
+
+\section{Let $A = \{x,y,z\}$ and $B = \{x,y\}$}
+\subsection{What is $A$ x $B$, where x is the Cartesian product operator?}
+\begin{center}
+	\begin{tabular}{ |c|c|c| }
+		  & x     & y     \\
+		\hline
+		x & (x,x) & (x,y) \\
+		y & (y,x) & (y,y) \\
+		z & (z,x) & (z,y) \\
+	\end{tabular}
+\end{center}
+    
+\section{Given sets $A$ and $B$ from problem 3, what is the power set of $B$?}
+$B = \{x,y\}$
+\begin{center}
+	The power set of $B$ is $\{0, \{x\},\{y\}, \{x,y\}\}$
+\end{center}
+    
+
+\section{Let $X = \{1,2,3,4,5\}$ and $Y = \{6,7,8,9,10\}$}
+Here at two functions, $g$ and $f$, defined in the following tables, over $X$ and $Y$:
+\begin{center}
+	\begin{tabular}{ |c|c|c|c|c|c| } 
+		\hline
+		g & 6  & 7  & 8  & 9  & 10 \\
+		\hline
+		1 & 10 & 10 & 10 & 10 & 10 \\
+		2 & 7  & 8  & 9  & 10 & 6  \\
+		3 & 7  & 7  & 8  & 8  & 9  \\
+		4 & 9  & 8  & 7  & 6  & 10 \\
+		5 & 6  & 6  & 6  & 6  & 6  \\
+		\hline
+	\end{tabular}
+	        
+	\begin{tabular}{ |c|c| }
+		\hline
+		n & f(n) \\
+		\hline
+		1 & 6    \\
+		2 & 7    \\
+		3 & 6    \\
+		4 & 7    \\
+		5 & 6    \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{What is the value of f(2)?}
+\begin{center}
+	7
+\end{center}
+\subsection{What is the range and domain of f?}
+\begin{center}
+	Domain: [1, 5] \\
+	Range: [6, 7]
+\end{center}
+\subsection{What is the value of g(2,10)?}
+\begin{center}
+	6
+\end{center}
+\subsection{What is the range and domain of g?}
+\begin{center}
+	Domain: [1, 10] \\
+	Range: [6, 10]
+\end{center}
+\subsection{What is the value of g(4,f(4))?}
+\begin{center}
+	8
+\end{center}
+
+\section{Prove $2 = 1$}
+Basis: Consider the equation $a = b$
+\begin{enumerate}
+	\item Multiply both sides by a to obtain $a^{2} = ab$
+	\item Subtract b2 from both sides to obtain $a^2 - b2 = ab - b^2$
+	\item Factor each side, to obtain $(a-b)(a+b) = b(a-b)$
+	\item Divide by $(a - b)$ to get $(a+b) = b$
+	\item Now, let $a = b = 1$.  
+	\item Therefore $2 = 1$, which is what we set out to prove.
+\end{enumerate}
+There seems to be an error here.  What is it?
+
+\begin{center}
+	The error is occurs in step 4.
+	This step involves dividing both sides of the equation by (a-b). However, this is impossible because the basis for this proof states that a=b, making dividing by (a-b) be dividing by zero. Because of its undefined properties, it is not mathematically possible to divide by zero.
+\end{center}
+
+\section{Let $(n) = 1 + 2 + ... + n$ be the sum of the first n positive integers. Using PMI, prove that: $S(n) = \frac{1}{2}n(n+1)$}
+
+Prove: 
+$$S(n) = \frac{1}{2}n(n+1)$$
+$$\frac{1}{2}n(n+1) = \frac{n(n+1)}{2}$$
+Base Case:
+$$S(1) = \frac{1(1+1)}{2}$$
+$$\frac{1(1+1)}{2} = 1$$
+$$S(1) = 1$$
+Induction Step:
+    
+Assume true for $k$:
+$$S(k) = \frac{k(k+1)}{2}$$
+    
+Define $S(k+1)$
+$$S(k+1) = 1 + 2 + 3 + ... + k + (k+1)$$
+    
+Add $(k+1)$ to the defined version of $S(k)$
+$$\frac{k(k+1)}{2}+(k+1)$$
+% $$S(k+1) = \frac{k(k+1)}{2}+(k+1)$$
+    
+Multiply $(k+1)$ by $\frac{2}{2}$ to equalize the base
+$$\frac{k(k+1)}{2}+\frac{2(k+1)}{2}$$
+% $$\frac{k(k+1)}{2}+(k+1) = \frac{k(k+1)}{2}+\frac{2(k+1)}{2}$$
+    
+Evaluate the addition
+$$\frac{k(k+1)+2(k+1)}{2}$$
+% $$\frac{k(k+1)}{2}+\frac{2(k+1)}{2} = \frac{k(k+1)+2(k+1)}{2}$$
+    
+Factor the numerator
+$$\frac{(k+1)(k+2)}{2}$$
+% $$\frac{k(k+1)+2(k+1)}{2} = \frac{(k+1)(k+2)}{2}$$
+    
+Expand the addition in $(k+2)$
+$$\frac{(k+1)((k+1)+1)}{2}$$
+% $$\frac{(k+1)(k+2)}{2} = \frac{(k+1)((k+1)+1)}{2}$$
+    
+Now the inducted equation matches the defined $S(k+1)$
+$$\frac{(k+1)((k+1)+1)}{2} = S(k+1)$$   
+
+\section{Let $C(n) = 13 + 23 + ... + n^3$ be the sum of the cubes of the first n positive integers. Using PMI, prove that: $C(n)$ has this closed form equivalent:$\frac{1}{4}(n^4+2n^3+n^2)$}
+
+Prove:
+$$C(n)=\frac{1}{4}(n^4+2n^3+n^2)$$
+$$\frac{1}{4}(n^4+2n^3+n^2)=\frac{n^4+2n^3+n^2}{4}$$
+Base Case:
+$$C(1)= \frac{1^4+2(1)^3+1^2}{4}$$
+$$\frac{1^4+2(1)^3+1^2}{4} = 1$$
+$$C(1) = 1$$
+Induction Step:
+    
+Assume true for some $k$
+$$C(k)=\frac{k^4+2k^3+k^2}{4}$$
+    
+Add $(k+1)^3$ for the next step in the equation
+$$\frac{k^4+2k^3+k^2}{4} + (k+1)^3$$
+    
+Expand $(k+1)^3$
+$$\frac{k^4+2k^3+k^2}{4} + ((k+1)(k+1)^2)$$
+$$\frac{k^4+2k^3+k^2}{4} + ((k+1)(k^2+2k+1))$$
+$$\frac{k^4+2k^3+k^2}{4} + ((k^3+2k^2+k)+(k^2+2k+1))$$
+$$\frac{k^4+2k^3+k^2}{4} + (k^3+3k^2+k+1)$$
+
+Multiply the RHS by $\frac{4}{4}$ to equalize the base
+$$\frac{k^4+2k^3+k^2}{4} + \frac{4(k^3+3k^2+k+1)}{4}$$
+$$\frac{k^4+2k^3+k^2}{4} + \frac{4k^3+12k^2+4k+4}{4}$$
+
+Evaluate the addition
+$$\frac{(k^4+2k^3+k^2)+(4k^3+12k^2+4k+4)}{4}$$
+$$\frac{k^4+6k^3+13k^2+4k+4}{4}$$
+
+Set the inducted equation equal to the assumed true equation for $C(k+1)$
+$$\frac{k^4+6k^3+13k^2+4k+4}{4} = \frac{(k+1)^4+2(k+1)^3+(k+1)^2}{4}$$
+
+Expand the RHS of the equation
+$$[...]$$
+$$\frac{k^4+6k^3+13k^2+4k+4}{4} = \frac{k^4+6k^3+13k^2+4k+4}{4}$$
+\\
+We have now proved that the inducted equation works for C(1), C(k), and C(k+1), therefore C(n) has been proven a true equation through mathematical induction
+        
+\end{document}
