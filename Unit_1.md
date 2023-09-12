@@ -23,6 +23,16 @@
   * [Proof by Mathematical Induction](#proof-by-mathematical-induction)
   * [Theory of Computation (intro)](#theory-of-computation-intro)
   * [Finite State Automata (FSA)](#finite-state-automata-fsa)
+* [Lecture 4](#lecture-4)
+  * [Finite State Machine](#finite-state-machine)
+    * [Abstract example](#abstract-example)
+  * [Finite State Machine (cont.)](#finite-state-machine-cont)
+* [Lecture 5](#lecture-5)
+  * [Computation on a FSA](#computation-on-a-fsa)
+    * [Finite State Automata](#finite-state-automata)
+    * [Computation](#computation)
+    * [Regular Language](#regular-language)
+      * [Regular Operations](#regular-operations)
 
 ## Quotes
 
@@ -515,10 +525,12 @@ front pad detects a person and opens the door
 back door holds an already open door
 
 FSA has two states:
+
 1. Closed State
 2. Open State
 
 Detects Signals:
+
 * R
   * Something on the rear pad
 * F
@@ -529,8 +541,208 @@ Detects Signals:
   * Nothing on either the front or rear pads
 
 Closed:
+
 * stays closed in R, B, N
 * opens in F
 Open:
 * stays open in F, R, B
 * closes on N
+
+## Lecture 4
+
+### Finite State Machine
+
+It ONLY knows what state it is in
+
+Continuing the pad/store example
+
+* Pad_f and Pad_r
+* they detect signals and change depending on the state
+* Signals:
+  * R (something on pad r)
+    * Closed:
+      * Stay closed
+    * Open
+      * Stay opened
+  * F (something on pad f)
+    * Closed:
+      * Open
+    * Open:
+      * Stay open
+  * B (something on both pad r and f)
+    * Closed:
+      * Stay closed
+    * Open:
+      * Stay open
+  * N (nothing on both pad r and f)
+    * Closed:
+      * Stay closed
+    * Open:
+      * Close
+
+#### Abstract example
+
+m1 (for machine 1)
+
+[](Images/Image-1.png)
+
+an FSA is a 5-tuple
+
+* Q
+  * A finite set, called "states"
+* $\Sigma$
+  * A finite set called "alphabet"
+* $\Delta$
+  * A function: $\delta: Q$x$\Sigma \RArr Q$
+    * Cartisian product, "Q cross Sigma"
+* $Q_{s}$ 
+  * $Q_{s} \epsilon Q$ called "start state"
+* $F \subseteq Q$
+  * A propper subset of Q
+
+$
+m_1
+\\
+Q=\{q_1, q_2, q_3\}
+\\
+\Epsilon = \{0, 1\}
+\\
+q_s = q_1
+\\
+F=\{q_2\}
+\\
+\delta(q_1, 0) \rarr q_1
+$
+
+$\delta$
+A language is a set of strings
+A string is a sequence of symbols
+
+### Finite State Machine (cont.)
+
+$\Sigma$ is a finite state called "Alphabet"
+
+$\Sigma^*$ is a set of strings such that
+
+1. $\lambda$ (empty string) $\in \Sigma^*$
+2. if $w \in \Sigma^*$ and $a \in \Sigma$, then $wa \in \Sigma^*$
+3. $w \in \Sigma^*$ only if it can be obtained from $\lambda$ by a finite number of applications of (2)
+
+$m_2$
+let $\Sigma = \{0, 1, 2\}$
+$\implies \Sigma^*$ is any seq of $\lambda, 0, 1, 2$
+$A=L(m_2) \{w|w \in \Sigma^*$ and the sum of the elements of $w$ is a multiple of 3$\}$
+
+[](Images/Image-2.png)
+
+## Lecture 5
+
+### Computation on a FSA
+
+#### Finite State Automata
+
+Let $m = (q_1, \Sigma, \delta, q_s, F)$ be an FSA  
+Let $w= w_1, w_2, ..., w_n$ be a string where each $w_i \in \Sigma$  
+then $m$ accepts (recognizes) $w$ if a sequence of states: $r_0, r_1, ..., r_n$ in $Q$ exist, such that:
+
+1. $r_0 = q_r$
+2. $\delta (r_i, w_{i+1}) r_{i+1} \text{ for } i = 0 ... n - 1$
+   * w i +1 is the next letter in the sequence, and r_{i+1} is also next in the sequence
+3. $r_n \in F$
+
+This basically means, "is therea  path in the FSA, where if you exhaust an input, you'll be at the end of the FSA
+
+#### Computation
+
+Def: An action of an FSA over a string meeting the three conditions
+
+Languages;
+
+* FSA (DFA)
+  * There is a machine, and a set of strings that are put together in a particular kind of way that cna be recognized by an FSA.
+  * a collection of strings recognized by an FSA is called a language
+  * the col of all strings recognized by all FSAs are referred to as "regular languages"
+  * >Regular expressions are regular languages
+* Push Down Automata
+  * An FSA with a stack
+  * >Context free language
+* Turing Machine
+  * A pushDown automata with infinite memory
+  * Recursively Enumerable
+
+#### Regular Language
+
+1. A language over an alphabet is a subset of $\Sigma^{*}$
+2. Language of a machine $m$ is the set of strings the machine accepts
+
+A language is regular if some FSA accepts it
+
+$\Sigma = {0, 1}$  
+Design an FSA that accepts all strings with an even number of 0s
+
+1. Define the states
+   1. odd so far
+      * $q_o$
+   2. even so far
+      * $q_e$
+
+$\text{in } q_e, 0 \Rarr q_o$  
+$\text{in } q_o, 0 \Rarr q_e$   
+$\text{in } q_e, 1 \Rarr q_e$  
+$\text{in } q_o, 1 \Rarr q_o$  
+
+[](Images\Image-3.png)
+
+$(Q, \Sigma, \delta, q_s, F)$  
+Lets set $q_s$ to be $q_e$
+
+* the set of integers are closed under `+, -, *` because these take in and return integers always
+* An algebra is a collection of elements and a set of opperations on those elements (think linear algebra)
+  * We want to define the algebra of regular languages
+
+##### Regular Operations
+
+Let $A, B$ be regular languages (a set of strings that is accepted by an FSA)
+
+1. Union 
+   1. $A \cup B = \{ x | x \in A \text{ or } x \in B\}$
+2. Concatenation
+   1. $A \cdot B = {xy | x \in A \text{ and } y \in B}$
+3. Kleene Star
+   1. $A^{\star} = {x_0, x_1, ..., x_k | k \ge 0 \text{ and each } x_i \in A}$
+
+$
+ex\\
+\Sigma = {a, b} \\
+A = {a,b} \\
+B={ab,ba} \\
+A \cup B = {a,b, ab, ba} \\
+a \cdot b = {aab,aba, bab, bba} \\
+A^{\star} = \text{ the set of all possible concatenations over }A
+$
+
+Theorem 1.25  
+The class of regular languages is closed under union
+
+[](Images\Image-4.png)
+$
+\delta(q_1, q_2) \rarr q_2\\
+\delta((r_1,r_2),a) = \delta_1(r_1,a), \delta_2(r_2,a)
+$
+
+Theorem 1.25  
+The class of regular languages is closed under union
+
+Proof:
+
+1. Let $m_1$ be an FSA that accepts A
+1. Let $m_2$ be an FSA that accepts B
+1. Construct $m$ that recognizes $A \cup B$
+   * $m+ (Q, \Sigma, \delta, q_s, F)$
+   1. $\{(r_1,r_2)|r_1 \in Q_1 \And r_2 \in Q_2 \text{ when } Q_1$ is the set of states of $m_1 \And Q_2$ is the set of states of $m_2\}$
+      1. $(r_1, r_2) Q_1 \text{X} Q_2$
+   2. $\Sigma$ is the same for $m_1, m_2$
+   3. $\delta((r_1,r_2),a) = (\delta_1(r_1,a),\delta_2(r_2,a))$
+   4. $q_s = (q_{s_{1}}, q_{s_2})$
+   5. $F$ is a set of tuples in which either element is an accept state of $m_1$ or $m_2$
+      1. $F=\{(r_1,r_2) | r_1 \in F_1$ or $r_2 \in F_2\}$
