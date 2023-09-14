@@ -806,9 +806,20 @@ This also works!
 
 ![](Images\Image-10.png)
 
-
 non-determinizion: the input doesnt determin fucntionally where we are going to go
 
 As a fork: ababb
 
-When there is a fork, you instantaneously go in both directions, 
+When there is a fork, you instantaneously go in both directions
+
+![](Images\Image-11.png)
+
+$\lambda (\epsilon)$ transition (lambda, epsilon)  
+$\delta : Q$ X $\Sigma \rarr Q$
+>Since sigma is a set and contains an empty element, one possible input is lambda (the empty string)
+
+![](Images\Image-12.png)
+
+010110 (Figure 1.29)
+
+![](Images\Image-13.png)
