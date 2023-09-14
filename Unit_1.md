@@ -33,6 +33,9 @@
     * [Computation](#computation)
     * [Regular Language](#regular-language)
       * [Regular Operations](#regular-operations)
+* [Lecture 6](#lecture-6)
+  * [Regular Operations (cont.)](#regular-operations-cont)
+  * [NonDeterministic Finite Automata (NFA)](#nondeterministic-finite-automata-nfa)
 
 ## Quotes
 
@@ -51,6 +54,8 @@
 * Dominic... You know what i mean?
   * 'i can read'
 * "Where is he now? dead"
+* the gobble incident
+* "Im ready to gobble"
 
 ## Lecture 1
 
@@ -584,7 +589,7 @@ Continuing the pad/store example
 
 m1 (for machine 1)
 
-[](Images/Image-1.png)
+![](Images/Image-1.png)
 
 an FSA is a 5-tuple
 
@@ -595,7 +600,7 @@ an FSA is a 5-tuple
 * $\Delta$
   * A function: $\delta: Q$x$\Sigma \RArr Q$
     * Cartisian product, "Q cross Sigma"
-* $Q_{s}$ 
+* $Q_{s}$
   * $Q_{s} \epsilon Q$ called "start state"
 * $F \subseteq Q$
   * A propper subset of Q
@@ -633,7 +638,7 @@ let $\Sigma = \{0, 1, 2\}$
 $\implies \Sigma^*$ is any seq of $\lambda, 0, 1, 2$
 $A=L(m_2) \{w|w \in \Sigma^*$ and the sum of the elements of $w$ is a multiple of 3$\}$
 
-[](Images/Image-2.png)
+![](Images/Image-2.png)
 
 ## Lecture 5
 
@@ -687,11 +692,11 @@ Design an FSA that accepts all strings with an even number of 0s
       * $q_e$
 
 $\text{in } q_e, 0 \Rarr q_o$  
-$\text{in } q_o, 0 \Rarr q_e$   
+$\text{in } q_o, 0 \Rarr q_e$
 $\text{in } q_e, 1 \Rarr q_e$  
 $\text{in } q_o, 1 \Rarr q_o$  
 
-[](Images\Image-3.png)
+![](Images\Image-3.png)
 
 $(Q, \Sigma, \delta, q_s, F)$  
 Lets set $q_s$ to be $q_e$
@@ -704,7 +709,7 @@ Lets set $q_s$ to be $q_e$
 
 Let $A, B$ be regular languages (a set of strings that is accepted by an FSA)
 
-1. Union 
+1. Union
    1. $A \cup B = \{ x | x \in A \text{ or } x \in B\}$
 2. Concatenation
    1. $A \cdot B = {xy | x \in A \text{ and } y \in B}$
@@ -724,7 +729,7 @@ $
 Theorem 1.25  
 The class of regular languages is closed under union
 
-[](Images\Image-4.png)
+![](Images\Image-4.png)
 $
 \delta(q_1, q_2) \rarr q_2\\
 \delta((r_1,r_2),a) = \delta_1(r_1,a), \delta_2(r_2,a)
@@ -746,3 +751,64 @@ Proof:
    4. $q_s = (q_{s_{1}}, q_{s_2})$
    5. $F$ is a set of tuples in which either element is an accept state of $m_1$ or $m_2$
       1. $F=\{(r_1,r_2) | r_1 \in F_1$ or $r_2 \in F_2\}$
+
+## Lecture 6
+
+### Regular Operations (cont.)
+
+Theorem 1.26  
+The class of regular languages is closed under concatenation  
+(Closed means that is an operation between multiple members of a language, the result is still contained in the language)
+
+$m_1$: even 0s  
+$m_2$: only three 1s
+
+![](Images\Image-5.png)
+![](Images\Image-6.png)
+
+### NonDeterministic Finite Automata (NFA)
+
+DFA: Given a state and symbol, it can go to a specific state
+
+NFA:
+
+* At each state, a specific input could lead to several states
+* if any input ultimately leads to accept state: success
+
+DFA: $\delta$ is a function from $Q$ X $\Sigma \rArr \{q_j\}$
+
+NFA: $Q$ X $\Sigma$ to $P(Q)$ (power set of Q)
+
+$\delta$ in an NFA:
+
+![](Images\Image-7.png)
+
+![](Images\Image-8.png)
+
+$\{\{a,b\}^*bb\}=L$
+
+![](Images\Image-9.png)
+
+abbabb
+
+$$
+[q_0, \text{abbabb}]\\
+\vdash [q_0, \text{bbabb}] \\
+\vdash [q_1, \text{babb}] \\
+\vdash [q_2, \text{abb}] \\
+\vdash [q_2, \text{abb}] \\
+\vdash [q_0, \text{bb}] \\
+\vdash [q_1, \text{b}] \\
+\vdash [q_2, \lambda] \\
+$$
+
+This also works!
+
+![](Images\Image-10.png)
+
+
+non-determinizion: the input doesnt determin fucntionally where we are going to go
+
+As a fork: ababb
+
+When there is a fork, you instantaneously go in both directions, 
