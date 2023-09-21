@@ -36,6 +36,12 @@
 * [Lecture 6](#lecture-6)
   * [Regular Operations (cont.)](#regular-operations-cont)
   * [NonDeterministic Finite Automata (NFA)](#nondeterministic-finite-automata-nfa)
+* [Lecture 7](#lecture-7)
+  * [NFA's continued](#nfas-continued)
+  * [Computational DFA](#computational-dfa)
+  * [Computational NFA](#computational-nfa)
+* [Lecture 8](#lecture-8)
+  * [Corollary 1.40](#corollary-140)
 
 ## Quotes
 
@@ -285,12 +291,12 @@ Q\ only\ if\ Q\newline
 Q\ if\ P\newline
 P \implies Q\newline
 $$
-P | Q | $P\implies Q$ | P=Q
---|---|---------------|----
-F | F | T             | T
-F | T | T             | F
-T | F | F             | F
-T | T | T             | T
+| P   | Q   | $P\implies Q$ | P=Q |
+| --- | --- | ------------- | --- |
+| F   | F   | T             | T   |
+| F   | T   | T             | F   |
+| T   | F   | F             | F   |
+| T   | T   | T             | T   |
 
 $$
 Suppose:\newline
@@ -298,12 +304,12 @@ P \implies Q\newline
 Q \implies P\newline
 (P \implies Q) \not = (Q \implies P)
 $$
-P | Q | $P\implies Q$ | $Q=P$ | $(p \implies q) = (q \implies p)$
---|---|---------------|-------|----------------------------------
-F | F | T             | T     | T
-F | T | T             | F     | F
-T | F | F             | T     | F
-T | T | T             | T     | T
+| P   | Q   | $P\implies Q$ | $Q=P$ | $(p \implies q) = (q \implies p)$ |
+| --- | --- | ------------- | ----- | --------------------------------- |
+| F   | F   | T             | T     | T                                 |
+| F   | T   | T             | F     | F                                 |
+| T   | F   | F             | T     | F                                 |
+| T   | T   | T             | T     | T                                 |
 
 * $P \implies Q$
 * $\neg Q \implies \neg P$ (Contrapositive)
@@ -635,7 +641,7 @@ $\Sigma^*$ is a set of strings such that
 
 $m_2$
 let $\Sigma = \{0, 1, 2\}$
-$\implies \Sigma^*$ is any seq of $\lambda, 0, 1, 2$
+$\implies \Sigma^*$ is any seq of $\lambda, 0, 1, 2$  
 $A=L(m_2) \{w|w \in \Sigma^*$ and the sum of the elements of $w$ is a multiple of 3$\}$
 
 ![](Images/Image-2.png)
@@ -823,3 +829,162 @@ $\delta : Q$ X $\Sigma \rarr Q$
 010110 (Figure 1.29)
 
 ![](Images\Image-13.png)
+
+## Lecture 7
+
+### NFA's continued
+
+$N_2: \Sigma=\{0,1\}$  
+Language: all strings over sigma that contain a 1 in the third position from the end  
+
+![](Images\Image-14.png)
+
+Formal definition of an NFA:
+
+$(Q, \Sigma, \delta, q_s, F)$
+
+1. $Q$ is a finite set of states
+2. $\Sigma$ is a finite alphabet
+3. $\delta$: $Q \times \Sigma_{\lambda}$
+4. $q_s \in Q$ is the start state
+5. $F \in Q$ is the set of accept states  
+
+$Q=\{q_1,q_2,q_3,q_4\}$  
+$\Sigma = \{0, 1, \lambda\}$  
+$\delta$
+
+| State | 0         | 1             | $\lambda$ |
+| ----- | --------- | ------------- | --------- |
+| $q_1$ | $\{q_1\}$ | $\{q_1,q_2\}$ | $\phi$    |
+| $q_2$ | $\{q_3\}$ | $\phi$        | $\{q_3\}$ |
+| $q_3$ | $\phi$    | $\{q_4\}$     | $\phi$    |
+| $q_4$ | $\{q_4\}$ | $\{q_4\}$     | $\phi$    |
+
+![](Images\Image-15.png)
+
+### Computational DFA
+
+m accepts w if a sequence of states $r_0,r_1, ... , r_n$ in $Q$ exist with these 3 conditions
+
+1. $r_0 = q_s$
+2. $\delta(r_i, w_{i+1}) = r_{i+1}$ for $i = 0, 1, ..., n-1$
+3. $r_n \in F$
+
+### Computational NFA
+
+1. the same
+2. $r_{i+1} \in \delta(r_i, w_{i+1})$ for $i = 0, ... , n-1$
+
+Theorem 1.39
+
+* Every NFA has an equivalent DFA
+
+Proof:
+
+* Given an abstract NFA, construct a DFA
+  * Let $N=\{Q,\Sigma,\delta,q_s,F)$ be an NFA
+    * Such that $A=L(N)$
+  * Using $N$, we will construct a DFA
+    * $M+=Q',\Sigma,\delta',q_s',F')$
+      * Such that $A+L(M)$
+  * 5 Steps
+    1. $Q'=P(Q)$
+       1. power set of Q
+    2. For $R \in Q '$ and $a \in \Sigma$ 
+       1. Let $\delta'(R,a) = \Sigma q \in Q| q \in \delta(r,a)$ for some $r \in R$
+          1. Every transition in $N$ generates a set of transitions in $M$
+    3. $q_s' = \{q_s\}$
+    4. $F'=\{R \in Q' | R$ contains an acce[t state pf $N\}$
+    5. Lambda transitions
+       1. Let $R \subset Q$
+       2. $E(R) = \{q | q \text{ can be reached  from } R \text{ by zero or more } \lambda \text{ transitions}\}$
+          1. EX: 
+             * ![](Images\Image-16.png)
+             2. $E(\delta(1,b)) = E(\{2\}) = \{2\}$
+             3. $E(\delta (1,a)) = E(\phi) = \phi$
+             4. $E(\delta (3,a))=E(\{1\})=\{1,3\}$
+             5. $\delta'(R,a)=\{q \in Q | q \in \delta(r,a) \text{ for some } r \in R\}$
+
+## Lecture 8
+
+Theorem 1.39
+
+* Every NFA has an equivalent DFA
+
+Proof:
+
+* Given an abstract NFA, construct a DFA
+  * Let $N=\{Q,\Sigma,\delta,q_s,F)$ be an NFA
+    * Such that $A=L(N)$
+  * Using $N$, we will construct a DFA
+    * $M+=Q',\Sigma,\delta',q_s',F')$
+      * Such that $A+L(M)$
+  * 5 Steps
+    1. $Q'=P(Q)$
+       1. power set of Q
+    2. For $R \in Q '$ and $a \in \Sigma$ 
+       1. Let $\delta'(R,a) = \Sigma q \in Q| q \in \delta(r,a)$ for some $r \in R$
+          1. Every transition in $N$ generates a set of transitions in $M$
+    3. $q_s' = \{q_s\}$
+    4. $F'=\{R \in Q' | R$ contains an acce[t state pf $N\}$
+    5. Lambda transitions
+       1. Let $R \subset Q$
+       2. $E(R) = \{q | q \text{ can be reached  from } R \text{ by zero or more } \lambda \text{ transitions}\}$
+          1. EX: 
+             * ![](Images\Image-16.png)
+             2. $E(\delta(1,b)) = E(\{2\}) = \{2\}$
+             3. $E(\delta (1,a)) = E(\phi) = \phi$
+             4. $E(\delta (3,a))=E(\{1\})=\{1,3\}$
+             5. $\delta'(R,a)=\{q \in Q | q \in \delta(r,a) \text{ for some } r \in R\}$
+             6. $\delta'(r,a) = \{q \in Q | q \in E(\delta(r,a)) \text{ for some } r \in R\}$
+
+### Corollary 1.40
+
+A language is regular if and only if an NFA recognizes it.
+
+> Proof:  
+>   A regular languages is defined as something recognized by a DFA  
+>   And since every DFA has an NFA...
+
+Example
+
+$N_4$
+
+![](Images\Image-17.png)
+
+$
+Q=\{1,2,3\} \\
+Q'=\{\phi,\{1\},\{2\}\{3\},\{1,2\},\{1,3\},\{2,3\},\{1,2,3\}\} \\
+q_s=1 E(1)=\{1,3\} \\
+F=\{1\} \\
+F'=\{R \in Q' | R \text{ contains an accept state of } N_4\} = \{\{1\},\{1,2\},\{1,3\},\{1,2,3\}\} \\
+$
+
+Transitions
+
+$\delta'(Ra) = \{q \in Q|q \in E(\delta(r,a)) \text{ for some } r \in R\}$
+* $\{\phi\}$
+   1. $E(\delta(\phi,a))\rarr E(\phi)=\phi$
+   2. $E(\delta(\phi,b))\rarr E(\phi)=\phi$
+* $\{1\}$
+   1. $E(\delta(1,a))\rarr E(\phi)=\phi$
+   2. $E(\delta(1,b))\rarr E(\{2\})=\{2\}$
+* $\{2\}$
+   1. $E(\delta(2,a))\rarr E(\{2,3\})=\{2,3\}$
+   2. $E(\delta(2,b))\rarr E(\{3\})=\{3\}$
+* $\{3\}$
+   1. $E(\delta(3,a))\rarr E(\{1\}))=\{1,3\}$
+   2. $E(\delta(3,b))\rarr E(\phi)=\phi$
+* $\{1,2\}$
+   1. $E(\delta(1,2))\rarr E(\{1,2\},a))=E(\delta(\{1\},a)\cup\delta(\{2\},a))=\{\phi\cup\{2,3\}=\{2,3\}\}$
+   2. $E(\delta(\{1,2\},b))\rarr E(\delta(\{1\},b) \cup\delta(\{2\},b))=E(\{2\}\cup\{3\}\{2,3\}$
+* $\{1,3\}$
+   1. $E(\delta(\{1,3\},a))=E(\delta(1,a)\cup(3,a))=E(\phi\cup\{1,3\})=\{1,3\}$
+   2. $E
+* $\{2,3\}$
+   1. $E(\delta(\{2,3\},a))\rarr=E(\delta(2,a)\cup\delta(3,a))=E(\{2,3\}\cup\{1,3\})=\{1,2,3\}$
+   2. $E(\delta(\{2,3\},b))=E(\delta(2,b)\cup\delta(3,b))=E(\{3\}\cup\phi\})=\{3\}$
+
+![](Images/Image-18.png)
+
+b: \{2\}\cup\{3\}\phi\rarr \{2,3\}
