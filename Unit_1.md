@@ -42,6 +42,10 @@
   * [Computational NFA](#computational-nfa)
 * [Lecture 8](#lecture-8)
   * [Corollary 1.40](#corollary-140)
+* [Lecture 9](#lecture-9)
+    * [Regex and Regular Languages](#regex-and-regular-languages)
+    * [Examamples](#examamples)
+  * [Regex Identities](#regex-identities)
 
 ## Quotes
 
@@ -62,6 +66,8 @@
 * "Where is he now? dead"
 * the gobble incident
 * "Im ready to gobble"
+* "I can't tell you this. Ask me when you are 10 years older"
+* "Let's rob the working class"
 
 ## Lecture 1
 
@@ -890,7 +896,7 @@ Proof:
   * 5 Steps
     1. $Q'=P(Q)$
        1. power set of Q
-    2. For $R \in Q '$ and $a \in \Sigma$ 
+    2. For $R \in Q '$ and $a \in \Sigma$
        1. Let $\delta'(R,a) = \Sigma q \in Q| q \in \delta(r,a)$ for some $r \in R$
           1. Every transition in $N$ generates a set of transitions in $M$
     3. $q_s' = \{q_s\}$
@@ -898,7 +904,7 @@ Proof:
     5. Lambda transitions
        1. Let $R \subset Q$
        2. $E(R) = \{q | q \text{ can be reached  from } R \text{ by zero or more } \lambda \text{ transitions}\}$
-          1. EX: 
+          1. EX:
              * ![](Images\Image-16.png)
              2. $E(\delta(1,b)) = E(\{2\}) = \{2\}$
              3. $E(\delta (1,a)) = E(\phi) = \phi$
@@ -922,7 +928,7 @@ Proof:
   * 5 Steps
     1. $Q'=P(Q)$
        1. power set of Q
-    2. For $R \in Q '$ and $a \in \Sigma$ 
+    2. For $R \in Q '$ and $a \in \Sigma$
        1. Let $\delta'(R,a) = \Sigma q \in Q| q \in \delta(r,a)$ for some $r \in R$
           1. Every transition in $N$ generates a set of transitions in $M$
     3. $q_s' = \{q_s\}$
@@ -930,7 +936,7 @@ Proof:
     5. Lambda transitions
        1. Let $R \subset Q$
        2. $E(R) = \{q | q \text{ can be reached  from } R \text{ by zero or more } \lambda \text{ transitions}\}$
-          1. EX: 
+          1. EX:
              * ![](Images\Image-16.png)
              2. $E(\delta(1,b)) = E(\{2\}) = \{2\}$
              3. $E(\delta (1,a)) = E(\phi) = \phi$
@@ -943,8 +949,8 @@ Proof:
 A language is regular if and only if an NFA recognizes it.
 
 > Proof:  
->   A regular languages is defined as something recognized by a DFA  
->   And since every DFA has an NFA...
+> A regular languages is defined as something recognized by a DFA  
+> And since every DFA has an NFA...
 
 Example
 
@@ -963,6 +969,7 @@ $
 Transitions
 
 $\delta'(Ra) = \{q \in Q|q \in E(\delta(r,a)) \text{ for some } r \in R\}$
+
 * $\{\phi\}$
    1. $E(\delta(\phi,a))\rarr E(\phi)=\phi$
    2. $E(\delta(\phi,b))\rarr E(\phi)=\phi$
@@ -988,3 +995,81 @@ $\delta'(Ra) = \{q \in Q|q \in E(\delta(r,a)) \text{ for some } r \in R\}$
 ![](Images/Image-18.png)
 
 b: \{2\}\cup\{3\}\phi\rarr \{2,3\}
+
+## Lecture 9
+
+Proving that Regular languages are closed under concatenation
+
+>Theorem 1.47  
+>The class of regular languages is closed under concatenation
+
+Technique: Proof by construction
+
+* Build 2 NFAs N1, N2
+  * A=L(N1)
+  * B=L(N2)
+* Construct NFA N3
+  * Use N1 to recognize A
+  * Use N2 to recognize B
+* "Since this NFA recognizes the concatenation of two regular languages, then I will have proven that regular langauges are closed under concatenation"
+
+Proof:
+
+$
+\text{Let } N_1 = (Q_1, \Sigma, \delta_1, q_1, F_1) \text{ recognizes A}\\
+\text{Let } N_2 = (Q_2, \Sigma, \delta_2, q_2, F_2) \text{ recognizes B}\\
+\text{Construct:}\\
+N = (Q_1, \Sigma_{\lambda},\delta, q_1, F_2)\\
+Q= Q_1 \cup Q_2\\
+\text{Start State of } N = \text{ start state of }N_1\\
+\text{Accept states of } N = \text{ accept states of } N_2\\
+\Sigma_{\lambda} = \Sigma \cup \lambda\\
+\text{Define } \delta \text{ such that } \forall q \in Q_1, a \in \Sigma_{\lambda}\\
+\delta(q,a)=
+\left\{
+\begin{array}{ll}
+\delta_1(q,a), q \in Q_1 \And q \not\in F_1 \\
+\delta_1(q,a), q \in F_1 \And a \not = \lambda \\
+\delta_1(q,a) \cup \{q_2\}, q \in F_1, and a=\lambda \\
+\delta_2(q,a), q \in Q_2
+\end{array}
+\right.
+\\
+N \text{ is an NFA that recognizes } A \cup B
+$
+
+#### Regex and Regular Languages
+
+Using Regular Operations to build regular expression
+
+$
+A=\{\{0,1\},\{0\}^{*}\} \Rarr \text{Regular language} \\
+(0 \cup 1)0^* \Rarr \text{regular expression} \\
+$
+
+Def: $R$ is a Regular Expression if $R$ is:
+
+1. 'a' for some 'a' in $\Sigma$
+2. $\lambda$ (the empty string)
+3. $\phi$ (the language with no strings)
+4. $(R_1 \cup R_2)$ where $R_1$ and $R_2$ are Regular Expressions
+5. $R_1 \dot R_2)$ where $R_1$ and $R_2$ are Regular Expressions
+6. $(R_1)^*$ where $R_1$ is a Regular Expression
+
+Def: RegEx
+
+* if $R$ is a Regular Expression, $R^{+} = RR^*$
+* if $R$ is a Regular Expression, $L(R)$ is the language that $R$ describes
+
+#### Examamples
+
+Let $\Sigma = \{0,1\}$
+
+1. $\Sigma^* 1 \Sigma^* = \{ w | w \text{ has at least one 1}\}$
+1. $1^* (0 1^+)^* = \{w | \text{ every 0 is followed by at least one 1}\}$
+1. $0\Sigma^*0\cup1 \Sigma^* 1\cup 0 \cup 1 = \{w | w \text{ starts and ends with the same symbol, and can't be empty}\}$
+
+### Regex Identities
+
+1. $1^* \phi = \phi$
+2. $\phi^* =\{\lambda\}$
