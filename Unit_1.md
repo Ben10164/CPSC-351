@@ -43,9 +43,11 @@
 * [Lecture 8](#lecture-8)
   * [Corollary 1.40](#corollary-140)
 * [Lecture 9](#lecture-9)
-    * [Regex and Regular Languages](#regex-and-regular-languages)
+  * [Regex and Regular Languages](#regex-and-regular-languages)
     * [Examamples](#examamples)
   * [Regex Identities](#regex-identities)
+* [Lecture 10](#lecture-10)
+  * [Example](#example)
 
 ## Quotes
 
@@ -601,7 +603,7 @@ Continuing the pad/store example
 
 m1 (for machine 1)
 
-![](Images/Image-1.png)
+![Image Caption](Images/Image-1.png)
 
 an FSA is a 5-tuple
 
@@ -650,7 +652,7 @@ let $\Sigma = \{0, 1, 2\}$
 $\implies \Sigma^*$ is any seq of $\lambda, 0, 1, 2$  
 $A=L(m_2) \{w|w \in \Sigma^*$ and the sum of the elements of $w$ is a multiple of 3$\}$
 
-![](Images/Image-2.png)
+![Image Caption](Images/Image-2.png)
 
 ## Lecture 5
 
@@ -708,7 +710,7 @@ $\text{in } q_o, 0 \Rarr q_e$
 $\text{in } q_e, 1 \Rarr q_e$  
 $\text{in } q_o, 1 \Rarr q_o$  
 
-![](Images\Image-3.png)
+![Image Caption](Images\Image-3.png)
 
 $(Q, \Sigma, \delta, q_s, F)$  
 Lets set $q_s$ to be $q_e$
@@ -741,7 +743,7 @@ $
 Theorem 1.25  
 The class of regular languages is closed under union
 
-![](Images\Image-4.png)
+![Image Caption](Images\Image-4.png)
 $
 \delta(q_1, q_2) \rarr q_2\\
 \delta((r_1,r_2),a) = \delta_1(r_1,a), \delta_2(r_2,a)
@@ -775,8 +777,8 @@ The class of regular languages is closed under concatenation
 $m_1$: even 0s  
 $m_2$: only three 1s
 
-![](Images\Image-5.png)
-![](Images\Image-6.png)
+![Image Caption](Images\Image-5.png)
+![Image Caption](Images\Image-6.png)
 
 ### NonDeterministic Finite Automata (NFA)
 
@@ -793,13 +795,13 @@ NFA: $Q$ X $\Sigma$ to $P(Q)$ (power set of Q)
 
 $\delta$ in an NFA:
 
-![](Images\Image-7.png)
+![Image Caption](Images\Image-7.png)
 
-![](Images\Image-8.png)
+![Image Caption](Images\Image-8.png)
 
 $\{\{a,b\}^*bb\}=L$
 
-![](Images\Image-9.png)
+![Image Caption](Images\Image-9.png)
 
 abbabb
 
@@ -816,7 +818,7 @@ $$
 
 This also works!
 
-![](Images\Image-10.png)
+![Image Caption](Images\Image-10.png)
 
 non-determinizion: the input doesnt determin fucntionally where we are going to go
 
@@ -824,17 +826,17 @@ As a fork: ababb
 
 When there is a fork, you instantaneously go in both directions
 
-![](Images\Image-11.png)
+![Image Caption](Images\Image-11.png)
 
 $\lambda (\epsilon)$ transition (lambda, epsilon)  
 $\delta : Q$ X $\Sigma \rarr Q$
 >Since sigma is a set and contains an empty element, one possible input is lambda (the empty string)
 
-![](Images\Image-12.png)
+![Image Caption](Images\Image-12.png)
 
 010110 (Figure 1.29)
 
-![](Images\Image-13.png)
+![Image Caption](Images\Image-13.png)
 
 ## Lecture 7
 
@@ -843,7 +845,7 @@ $\delta : Q$ X $\Sigma \rarr Q$
 $N_2: \Sigma=\{0,1\}$  
 Language: all strings over sigma that contain a 1 in the third position from the end  
 
-![](Images\Image-14.png)
+![Image Caption](Images\Image-14.png)
 
 Formal definition of an NFA:
 
@@ -866,7 +868,7 @@ $\delta$
 | $q_3$ | $\phi$    | $\{q_4\}$     | $\phi$    |
 | $q_4$ | $\{q_4\}$ | $\{q_4\}$     | $\phi$    |
 
-![](Images\Image-15.png)
+![Image Caption](Images\Image-15.png)
 
 ### Computational DFA
 
@@ -905,11 +907,11 @@ Proof:
        1. Let $R \subset Q$
        2. $E(R) = \{q | q \text{ can be reached  from } R \text{ by zero or more } \lambda \text{ transitions}\}$
           1. EX:
-             * ![](Images\Image-16.png)
-             2. $E(\delta(1,b)) = E(\{2\}) = \{2\}$
-             3. $E(\delta (1,a)) = E(\phi) = \phi$
-             4. $E(\delta (3,a))=E(\{1\})=\{1,3\}$
-             5. $\delta'(R,a)=\{q \in Q | q \in \delta(r,a) \text{ for some } r \in R\}$
+             * ![Image Caption](Images\Image-16.png)
+             1. $E(\delta(1,b)) = E(\{2\}) = \{2\}$
+             1. $E(\delta (1,a)) = E(\phi) = \phi$
+             1. $E(\delta (3,a))=E(\{1\})=\{1,3\}$
+             1. $\delta'(R,a)=\{q \in Q | q \in \delta(r,a) \text{ for some } r \in R\}$
 
 ## Lecture 8
 
@@ -937,12 +939,12 @@ Proof:
        1. Let $R \subset Q$
        2. $E(R) = \{q | q \text{ can be reached  from } R \text{ by zero or more } \lambda \text{ transitions}\}$
           1. EX:
-             * ![](Images\Image-16.png)
-             2. $E(\delta(1,b)) = E(\{2\}) = \{2\}$
-             3. $E(\delta (1,a)) = E(\phi) = \phi$
-             4. $E(\delta (3,a))=E(\{1\})=\{1,3\}$
-             5. $\delta'(R,a)=\{q \in Q | q \in \delta(r,a) \text{ for some } r \in R\}$
-             6. $\delta'(r,a) = \{q \in Q | q \in E(\delta(r,a)) \text{ for some } r \in R\}$
+             * ![Image Caption](Images\Image-16.png)
+             1. $E(\delta(1,b)) = E(\{2\}) = \{2\}$
+             1. $E(\delta (1,a)) = E(\phi) = \phi$
+             1. $E(\delta (3,a))=E(\{1\})=\{1,3\}$
+             1. $\delta'(R,a)=\{q \in Q | q \in \delta(r,a) \text{ for some } r \in R\}$
+             1. $\delta'(r,a) = \{q \in Q | q \in E(\delta(r,a)) \text{ for some } r \in R\}$
 
 ### Corollary 1.40
 
@@ -956,7 +958,7 @@ Example
 
 $N_4$
 
-![](Images\Image-17.png)
+![Image Caption](Images\Image-17.png)
 
 $
 Q=\{1,2,3\} \\
@@ -992,7 +994,7 @@ $\delta'(Ra) = \{q \in Q|q \in E(\delta(r,a)) \text{ for some } r \in R\}$
    1. $E(\delta(\{2,3\},a))\rarr=E(\delta(2,a)\cup\delta(3,a))=E(\{2,3\}\cup\{1,3\})=\{1,2,3\}$
    2. $E(\delta(\{2,3\},b))=E(\delta(2,b)\cup\delta(3,b))=E(\{3\}\cup\phi\})=\{3\}$
 
-![](Images/Image-18.png)
+![Image Caption](Images/Image-18.png)
 
 b: \{2\}\cup\{3\}\phi\rarr \{2,3\}
 
@@ -1038,7 +1040,7 @@ Q= Q_1 \cup Q_2\\
 N \text{ is an NFA that recognizes } A \cup B
 $
 
-#### Regex and Regular Languages
+### Regex and Regular Languages
 
 Using Regular Operations to build regular expression
 
@@ -1053,13 +1055,15 @@ Def: $R$ is a Regular Expression if $R$ is:
 2. $\lambda$ (the empty string)
 3. $\phi$ (the language with no strings)
 4. $(R_1 \cup R_2)$ where $R_1$ and $R_2$ are Regular Expressions
-5. $R_1 \dot R_2)$ where $R_1$ and $R_2$ are Regular Expressions
+5. $R_1 \cdot R_2)$ where $R_1$ and $R_2$ are Regular Expressions
 6. $(R_1)^*$ where $R_1$ is a Regular Expression
 
 Def: RegEx
 
 * if $R$ is a Regular Expression, $R^{+} = RR^*$
 * if $R$ is a Regular Expression, $L(R)$ is the language that $R$ describes
+
+![Image Caption](Images/Image-19.png)
 
 #### Examamples
 
@@ -1073,3 +1077,61 @@ Let $\Sigma = \{0,1\}$
 
 1. $1^* \phi = \phi$
 2. $\phi^* =\{\lambda\}$
+
+## Lecture 10
+
+> Theorem 1.54:  
+> A language is regular if and only if it can be described by a regular expression.
+> Proof:  
+> Lemma 1.55:  
+> If a language, $L$, can be described by a regex, $R$, $L$ is regular.
+> Proof:  
+> $L$ is described by a regex, $R$.  
+
+$R$ is a regex if:
+
+1\. 'a' (any character)
+
+> $R$ is a regex if $R$ is 'a' for some 'a' $\in \Sigma$
+> NFA, $N$, such that $L(N) = L(R)$
+> $Q=\{1,2\}$
+> $\Sigma=\{'a'\}$
+> $q_s = 1$
+> $F=\{2\}$
+> $\delta(1,'a')=2$
+> $\delta(q_i, b) = \phi, r \not = 1 \text{ or } b \not \in \Sigma$
+
+2\. $\lambda$
+
+> $R$ is a regex if $L(R) = \lambda$
+> $\rarr$ then $L(R) = \{\lambda\}
+> > $Q=\{1\}$
+> > $\Sigma = \{\lambda\}$
+> > $q_s = 1$
+> > $F = \{1\}$
+> > $\delta(r,b) = \phi \forall r, \forall b$
+
+3\. $\phi$
+
+> $R=\phi$
+> $q_s=q_1$
+> $F=\phi$
+> $\delta(r,b) = \phi \forall r, \forall b$
+
+4\. $(R_1 \cup R_2)$
+
+> Proof is very similar to the existing proof for union
+
+5\. $R_1 \cdot R_2$
+
+> Proof is very similar to the existing proof for concatenation
+
+6\. $R_{1}^*$
+
+> Proof is very similar to the existing proof for kleene star
+
+### Example
+
+$(a b \cup a )^*$
+
+![Image Caption](Images/Image-20.png)
