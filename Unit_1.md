@@ -48,6 +48,12 @@
   * [Regex Identities](#regex-identities)
 * [Lecture 10](#lecture-10)
   * [Example](#example)
+  * [Lemma 1.60](#lemma-160)
+* [Lecture 11](#lecture-11)
+  * [Context Free Languages](#context-free-languages)
+    * [Pumping Lemme](#pumping-lemme)
+* [Lecture 12](#lecture-12)
+  * [Context Free Language](#context-free-language)
 
 ## Quotes
 
@@ -70,6 +76,12 @@
 * "Im ready to gobble"
 * "I can't tell you this. Ask me when you are 10 years older"
 * "Let's rob the working class"
+* "theres a disability that 14 year old boys have, where they just laugh uncontrollably... I dont mean to assume theres a problem with your development but..."
+  * "I loved it then. I havent been happy since then"
+* "I was a coach for a basketball team. we lost every game. i was fired"
+* "I was a prison guard"
+  * "Teaching this class is like being a prison guard again"
+* "I should call in a drone strike"
 
 ## Lecture 1
 
@@ -1135,3 +1147,153 @@ $R$ is a regex if:
 $(a b \cup a )^*$
 
 ![Image Caption](Images/Image-20.png)
+
+### Lemma 1.60
+
+> Lemma 1.60
+> If a language is regular, it can be described by a regex.
+
+This will be shown through an example
+
+$a^*b(a \cup b)^* = R\\$
+Build a DFA that accepts this language
+
+![Image Caption](Images/Image-21.png)
+
+GNFA:
+
+* No transitions from non-start state to start state
+* No transitions leave the accept state
+* All states except start and accept are connected
+* "A GNFA is a generalize non-deterministic finite automata, is a DFA with all of the nodes connected."
+
+Now we modify this to be a GNFA
+
+$\phi$ arrows
+
+* delta generates a state
+* we want to add these phoney transitions that dont really do anything
+* so we indicate the non-generation of a state with a $\phi$ symbol
+
+![Image Caption](Images/Image-22.png)
+
+![Image Caption](Images/Image-23.png)
+
+## Lecture 11
+
+### Context Free Languages
+
+* Is this language regular
+  * $\Sigma = \{a,b\}$
+  * $L = \{a^i, b^i \space \forall i \ge 0\}$
+  * Nope. Try $aaab \cdot ab$
+
+This is a context free language, because you cant draw the machine
+
+#### Pumping Lemme
+
+![Image Caption](Images/Image-24.png)
+
+1. a bab b
+2. a bab bab b
+
+The "pump"ing part is the bab's, in between the a and b
+
+* S = aa bab baab
+  * x = aa
+  * y = bab
+  * z = babb
+* You visit q1 twice in this scheme
+  * q1 q3 q2 q1
+* $x, y, z, z \in L(m)$
+  * so is $xy^iz, i \ge 0$
+
+$S=S_1S_2S_3S_4S_5S_6...S_n\\$
+$S=(q_1)S_1(q_3)S_2(q_20)S_3(q_9)S_4(q_17)S_5(q_9)S_6(q_6)...(q_35)S_n(q_13 \text{[accept]})$
+
+* X takes $m$ from $q_1$ to $q_9$
+* y takes $m$ away from $q_9$ and back
+* z takes $m$ to $q_13$
+
+If $A$ is a regular language, then there is a number $P$, the pumping length, where if $S$ is any string in $A$ of length at least $P$, then $S$ may be divided into 3 parts, $S=xyz$ such that:
+
+1. for each $i \ge 0, xy^iz\in A$
+2. $|y|\gt0$ (cardinaklity)
+3. $|xy|\le P$ (cardinality)
+
+Proof:
+
+* Let:
+  * $m=(Q, \Sigma, \delta, q_s, F)$
+  * $L(m) = A$
+  * $P=|Q|$
+  * $S=s_1,s_2,...,s_n$ be a string
+    * $|S| = n, n \ge P$
+  * $r_1,r_2,...r_{n+1}$ be the sequence of states visited while processing $S$
+* So
+  * $\delta(r_i, s_i) = r_{i+1}$ for $1\le i \le n$
+    * $|S| = 1$
+      * (1) -> (2) [moves once]
+    * $|S| = 2$
+      * (1) -> (2) -> (3) [moves twice]
+    * $|n| = n+1$ states
+    * $n \ge p#
+    * $n+1 \ge P+1$
+  * Since $P$ is the number of states, a sequence of $P+1$ states requires that $2$ of the $P+1$ states must be the same
+    * This is asserted by the pigeon hole principal
+      * If you have three pigeons, and two houses, there must be at least two pigeons living with each other
+  * Call these $r_j$ and $r_l$ (the two that are the same)
+  * Because $r_l$ occurs among the first $P+1$ states in the sequence starting at $r_1$, we have $l \le P+1$
+  * Now let
+    * $x = S_1, ... S_{j-1}$
+    * $y = S_j, ... S_{l-1}$
+    * Z=S_l, ... S_n$
+  * Since ...
+    * $x$ takes $m$ from $r_1$ to $r_j$
+    * $y$ takes $m$ from $r_j$ to $r_j$
+    * #z$ takes $m$ from $r_j$ to $r_{n+1}$
+  * Condition 1 must be true
+    * $xy^iz \text{ for } i \ge 0$
+  * Condition 2 must be true
+    * Since $j \not = l$, the length of $y$ is greater than 0 ($|y| \gt 0$
+  * Condition 3 must be true
+    * Since $y \le P+1$, $l-1 \le P$, then the length of $xy = S_1, ... S_{l-1}$ is $l-1$, $|xy| \le P$
+
+## Lecture 12
+
+### Context Free Language
+
+![Image Caption](Images/Image-25.png)
+
+* Regular Languages
+  * DFA
+  * NFA
+  * Expressed with Regex
+* Context Free Languages
+  * Push down automata (a dfa with stack memory)
+  * Expressed with Context Free Grammar
+
+Context Free Grammar
+
+* $(V, \Sigma, R, S)$
+  * $V$: a finite set of variables
+  * $\Sigma$: a finite set, distjoint from $V$, called "Terminals"
+  * $R$: A finite set of rules of the form $A \rarr W$ where $W \in (V \cup \Sigma)^*
+    * Any sequence of variables and terminals in any order
+  * $S$: $S \in V$ called the start variable
+
+Example:
+
+* $Q_1$
+  * $V = \{A,B\}$
+  * $\Sigma = \{0, 1, \#\}$
+  * $R = \{\\ \space\space\space\space\space\space A \rarr 0 A 1,\\ \space\space\space\space\space\space A \rarr B, \\ \space\space\space\space\space\space  B \rarr \#\\\}$
+  * $S = A$
+
+$S \rarr \text{ NP VP}\\$
+$NP \rarr \text{Pro|Det Nominal}\\$
+$VP \rarr \text {V nominal}\\$
+$Pro \rarr \text{I|her|him}\\$
+$Det \rarr \text{a|an|the|possessive adjective}\\$
+$Nominal \rarr \text{Nominal PP | noun}\\$
+$PP \rarr \text{P noun | P det noun}\\$
