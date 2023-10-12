@@ -1,0 +1,120 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\usepackage[latin1]{inputenc}
+\usepackage{lipsum}       % for sample text
+\usepackage{changepage}   % for the adjustwidth environment
+
+\newcommand{\lambdabar}{{\mkern0.75mu\mathchar '26\mkern -9.75mu\lambda}}
+
+\title{Project 5}
+\author{Jesse Adams, Dominic Orsi, Ben Puryear}
+\date{October 12th, 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Prove the following lemma by PMI. $\text{If } u,v \in \Sigma^* \text{, then }(uv)^R =v^Ru^R$.}
+
+Basis: 
+
+    If $|v|$ and $|u|$ are $0$, $v \in \Sigma^*$, 
+
+    then $u = \lambda$ 
+
+    s.t. 
+\begin{align*}
+    (uv)^R &= (\lambda v)^R \\
+    &= (v)^R \\
+    &= v^R (\lambda)^R \\
+    &= v^R \lambda^R \\
+    &= v^R u^R
+\end{align*}
+\newline
+Inductive Step:
+
+Let $|u| = n > 0$
+
+assume $u = aw$, where $w$ is a string, $|w| = n - 1$ and $a \in \Sigma$
+
+Then, 
+
+\begin{align*}
+    (uv)^R &= (awv)^R \\
+    &= (awv)^R \\
+    &= v^R (aw)^R \\
+    &=v^R w^R (a)^R \\
+    &=v^R w^R a^R \lambda^R \\
+    &=v^R w^R a^R \lambda v^R w^R a^R \\
+    &=v^R (wa)^R \\
+    &=v^R u^R
+\end{align*}
+We have now proven that $(uv)^R = v^R u^R$ through mathematical induction.
+
+\section{Using induction on the length of the string, and the lemma you proved in problem 1, prove that $(w^R)^R = w \text{ for all strings } w \in \Sigma ^*$.}
+
+Let $w = uv$
+\begin{align*}
+    ((w)^R)^R &= ((uv)^R)^R \\
+    &= (v^R u^R)^R \\
+    &= u^R (v^R)^R \\
+    &= u^R v^R \\
+    &= (uv)^R \ [\text{From Q1 Lemma}]\\
+    &=vu \\
+    &= w
+\end{align*}
+
+We have now proven that $((w)^R)^R = w$ through mathematical induction.
+\section{Let $J$ be the set of palindromes over $\{a,b\}$.}
+
+\subsection{Give a formal definition of $J$ using set notation.}
+
+$J = \{w | w \in \{a \cup b\}^* \text{ s.t. } w^R = w\}\}$
+
+\subsection{Using the pumping lemma for regular languages, show that $J$ is not regular.}
+
+The pumping lemma can be used to determine if $J$ is a regular language by determining if there is a number $P$, the pumping length, where if $s$ is any string in $L$ of length at least $P$, then $s$ may be divided into 3 parts, $S=xyz$ such that: \\
+1. for each $i \ge 0$, $xy^iz \in J$ \\
+2. $|y| = 0$ \\
+3. $|xy| \le P$
+
+
+In this case, due to $J$ being the set of palindromic strings formed from $\{a, b\}$, we can define $S = a^p b^p a^p$.
+
+
+Through the first criteria for the modified version of $s$ used in the pumping lemma, $\forall i > 0, xy^iz \in J$, we can deduce the following. 
+
+If $S = a^h a^i a^{p-h-i} b^p a^p \in J$, then $S' = a^h a^i a^i a^{p-h-i} b^p a^p \in J$ which is equivalent to $a^{i+p} b^p a^p \in J$.
+
+However, when defining this, we specified that $i > 0$, which is contradicted by this statement. \\
+Therefore: \\
+Since $i \not = 0$, $S'^R \not = S'$, so $S' \not \in J$. \\
+This means that $S$ is not a regular language.
+
+
+\section{Let $L = \{ww | w \in \{a,b\}* \}$. Using the pumping lemma for regular languages, show that L is not regular.}
+
+\textbf{Lets assume that L is regular: }
+\\
+Consider the constant $k$ ($k \ge 1$)
+\\
+Consider a string $s = a^mb^mb^ma^m$ where $m \ge 1$ 
+\\
+Now consider decomposition's for $s$. 
+\\
+They will be of the form $s=xy$, where $y=a^j$ where $1 \le j \le k$. 
+\\
+Now by pumping lemma, $k v^i k$ belongs to $L$ for all $i \ge 0$. 
+\\
+Consider $i=0$, then we have a string in the form $a^l b^m a^m b^m$ where $l < m$. 
+\\
+Since the number of $a$'s on the left side of the string is less than $a$'s on the right side of the string, they can never be represented as $ww$, where $w \in ab^*$. 
+\\  
+This \textbf{violates} our assumption that $L$ is regular. 
+\\
+So by \textbf{contradiction}, we have shown that $L$ is not regular.
+\end{document}

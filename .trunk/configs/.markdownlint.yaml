@@ -1,3 +1,0 @@
-# Autoformatter friendly markdownlint config (all formatting rules disabled)
-default: true
-line_length: false
