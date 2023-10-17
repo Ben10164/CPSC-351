@@ -59,6 +59,8 @@
   * [Chompsky](#chompsky)
 * [Lecture 14](#lecture-14)
   * [Push Down Automata](#push-down-automata)
+* [Lecture 15](#lecture-15)
+  * [Push Down Automata (Cont.)](#push-down-automata-cont)
 
 ## Quotes
 
@@ -67,7 +69,7 @@
 * "We don't know why boys have awful handwriting. Its almost as fascinating as why there are no few women in computer science"
 * "I get depressed when I am wrong"
 * "Let's talk about pencils"
-* "There are no Jews here?"
+* "There aren't any Jews here?"
   * "The word is Ongaloza"
 * "I'm going to die early"
 * "I was the major suck up back in Catholic school"
@@ -86,7 +88,11 @@
 * "I was a coach for a basketball team. we lost every game. i was fired"
 * "I was a prison guard"
   * "Teaching this class is like being a prison guard again"
+* that time he got unnaturally angry at a random kid walking into getting his backpack
 * "I should call in a drone strike"
+* "let me watch. i want to watch"
+* "women are super stretchy"
+* "my wife is much stretchier"
 
 ## Lecture 1
 
@@ -1464,18 +1470,112 @@ $
     * $A_1 \rarr SA$
     * $B \rarr b$
 5. (what is labeled as 4)
-    * S_0 \rarr aB
-    * S \rarr aB
-    * A \rarr aB
-    * U \rarr a
-    * S_0 \rarr AA_1|UB|a|SA|AS
-    * S \rarr AA_1|UB|a|SA|AS
-    * A \rarr AA_1|UB|a|SA|AS
-    * A_1 \rarr SA
-    * B \rarr b
+    * $S_0 \rarr aB$
+    * $S \rarr aB$
+    * $A \rarr aB$
+    * $U \rarr a$
+    * $S_0 \rarr AA_1|UB|a|SA|AS$
+    * $S \rarr AA_1|UB|a|SA|AS$
+    * $A \rarr AA_1|UB|a|SA|AS$
+    * $A_1 \rarr SA$
+    * $B \rarr b$
+
+![Image Caption](Images/Image-27.png)
+
+![Image Caption](Images/Image-28.png)
+
+![Image Caption](Images/Image-29.png)
+
+![Image Caption](Images/Image-30.png)
+
+![Image Caption](Images/Image-31.png)
+
+![Image Caption](Images/Image-32.png)
 
 ### Push Down Automata
 
 Started this basically at the end of class
 
 $a^ib^i$, a way to determin if it is valid is by pushing something onto the stack when they read an a, and then remove it from the stack when it is a b, and if the stack is empty following it, it is valid
+
+## Lecture 15
+
+### Push Down Automata (Cont.)
+
+* Schematic of FSA (Finite State Automata)
+  * State Controller: The mechanism that causes the FSA to advance from state to state
+* Schematic of PDA
+  * State Controller:
+    * The state controller controlls the reading of the input (as before), but it also controls the stack
+  * The stack: When we read things, we frequently push or pop things into or off the stack
+    * The contents of the top of the stack and the item read will control whaere we move to
+
+Stack: In PDA, stack space is unlimited because this is a theoretical concept
+
+Terms:
+
+* $\Gamma is the **stack** alphabet$
+  * Just as $\Sigma_{\lambda} = \Sigma \cup \{\lambda \}$, there is $\Gamma_{\lambda} = \Gamma \cup \{\lambda\}$
+* $\delta$
+  * $Q$ X $\Sigma_{\lambda}$ X $\Gamma_{\lambda} \rarr$ the domain of a PDA
+  * $P(Q$X$\Gamma_{\lambda})$
+  * Delta says Given a state, some input, and the top of the stack, then I could:
+    * Pop the stack
+    * Push something onto the stack
+    * change states
+
+$
+Q=\{a,b\} \\
+\Gamma_{\lambda} = \{1,2\} \\
+P(Q \times \Gamma_{lambda}) \\
+P(\{(a,1),(a,2),(b,1),(b,2)\})
+$
+
+Formal Def:
+
+* 6-Tuple
+* $(Q, \Sigma_{\lambda}, \Gamma_{\lambda}, \delta, q_0, F)$
+  * $Q$ is a set of states
+  * $\Sigma_{\lambda}$ is an input alphabet
+  * $\Gamma_{\lambda}$ is a stack alphabet
+  * $\delta$ are transitions:
+    * $Q \times \Sigma_{\lambda} \times \Gamma_{\lambda} \rarr P(Q \times F)$
+  * $q_0$ is the start state
+  * $F$ is a subset of Q that is the set of substates ($F \subset Q$)
+
+Computation of a PDA
+
+* m = \{Q  \Sigma_|{\lambda}, \Gamma_{\lambda}, \delta, q_0, F\}
+* Input String: $w = w_1w_2...,w_m;$ each $w_i \in \Sigma_{\lambda}$
+* States: $r_0,r_1,...,r_m \in Q$
+* Stack Strings: $s_0,s_1,...,s_m;$ each $s_i \in \Gamma_{\lambda}^*$
+
+A computation meets the following conditions:
+
+1. $r_0 = q_0$ (you start where you start), $s_0 = \lambda$ (there is nothing on the stack at the beggining)
+2. for $i = 0 ... m-1$, we have $(r_{i+1 }, b) \in \delta (r_i, w_{i+1}, a)$ where $s_i = at$ and $s_{i+1} = bt$ for some $a, b \in \Gamma_{\lambda}, t \in \Gamma_{\lambda}^*$
+   1. $(r_{i+1 }, b)$ (push)
+   2. $\delta (r_i, w_{i+1}, a)$ (pop) when performing the delta operation, and the notation has an a in the design, it means that you have popped it
+   3. $at$ (t are the other items on the stack)
+   4. $bt$
+3. $r_m \in F$
+4. <!-- --->
+   1. $r_{i+1}$ is the new state
+   2. $b$ is the new stack top
+   3. $r_i$ is the current state
+   4. $w_{i+1}$ is the next character (symbol) to be read
+   5. $a$ is the current stack top
+5. $\delta$ rules
+   1. $(r_{i+1}, b) \in \delta(r_i, w_{i+1}, a)$
+      1. $r_{i+1}$ is the new state
+      2. $b$ is the new stack top
+      3. $r_i$ is the current state
+      4. $w_{i+1}$ is the next input symbol
+      5. $a$ is the current stack top
+   2. [Image caption](Images/Image-33.png)
+   3. [Image caption](Images/Image-34.png)
+6. Operational Rules
+   1. $x,y,z$ can be $\lambda$
+   2. $x=\lambda$ make the transition without reading
+   3. $y=\lambda$ make the transition without reading OR popping the stack
+   4. $z = \lambda$ make the transition without pushing
