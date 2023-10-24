@@ -61,6 +61,8 @@
   * [Push Down Automata](#push-down-automata)
 * [Lecture 15](#lecture-15)
   * [Push Down Automata (Cont.)](#push-down-automata-cont)
+* [Lecture 16](#lecture-16)
+  * [Theorem 2.21](#theorem-221)
 
 ## Quotes
 
@@ -93,6 +95,8 @@
 * "let me watch. i want to watch"
 * "women are super stretchy"
 * "my wife is much stretchier"
+* "ben, are you stretchy in other ways?"
+* "what a glorious thing, the youth"
 
 ## Lecture 1
 
@@ -1545,7 +1549,7 @@ Formal Def:
 
 Computation of a PDA
 
-* m = \{Q  \Sigma_|{\lambda}, \Gamma_{\lambda}, \delta, q_0, F\}
+* $m = \{Q  \Sigma_|{\lambda}, \Gamma_{\lambda}, \delta, q_0, F\}$
 * Input String: $w = w_1w_2...,w_m;$ each $w_i \in \Sigma_{\lambda}$
 * States: $r_0,r_1,...,r_m \in Q$
 * Stack Strings: $s_0,s_1,...,s_m;$ each $s_i \in \Gamma_{\lambda}^*$
@@ -1572,10 +1576,84 @@ A computation meets the following conditions:
       3. $r_i$ is the current state
       4. $w_{i+1}$ is the next input symbol
       5. $a$ is the current stack top
-   2. [Image caption](Images/Image-33.png)
-   3. [Image caption](Images/Image-34.png)
+   2. ![Image caption](Images/Image-33.png)
+   3. ![Image caption](Images/Image-34.png)
 6. Operational Rules
    1. $x,y,z$ can be $\lambda$
    2. $x=\lambda$ make the transition without reading
    3. $y=\lambda$ make the transition without reading OR popping the stack
    4. $z = \lambda$ make the transition without pushing
+
+## Lecture 16
+
+Context Free Grammars generate Contex Free Languages
+
+$\delta$ rules
+
+$(r_{i+1},b) \in \delta(r_i, w_{i+1}, a)$
+
+* $r_{i+1}$
+  * new state
+* $b$
+  * new stack top
+* $r_i$
+  * the current state
+  * $\in \Sigma$
+* $w_{i+1}$
+  * the next input symbol
+* $a$
+  * the current stack top
+
+$a, b \in \Gamma^*$  
+$r_{i+1} \And r_i \in \Sigma$
+
+$x, y, z$ can be $\lambda$
+
+![Image caption](Images/Image-35.png)
+
+![Image caption](Images/Image-36.png)
+
+if:
+
+* $x = \lambda$
+  * make the transition without reading
+* $y = \lambda$
+  * make the transition without popping AND reading
+* $z = \lambda$
+  * make the transition without pushing
+
+$\lambda, \lambda \rarr \$$ means that if the next input symbol is $\lambda$, and the top of the current stack is $\lambda$, then put $ on the top of the stack
+
+$x, y \rarr z$:
+
+* $x = w_{i+1}$ (the input symbol
+* $y = a$ the current stack top
+* $z = b$ the new stack top
+
+$L = \{a^i b^i | i \ge 0\}$
+
+Now we can build a PDF
+
+1. go to $q_2$ without reading, and push $
+2. read 0, push 0
+3. read 1, pop stack
+4. read 1, pop stack
+
+in the book $\epsilon$ is used to define $\lambda$
+
+![Image caption](Images/Image-37.png)
+
+![Image caption](Images/Image-38.png)
+
+### Theorem 2.21
+
+A language is contex free if and only if there is a PDA that recognizes it
+
+Grammar $\rarr$ PDA  
+PDA $\rarr$ Grammar
+
+Not a general proof, but this is an example that shows it can be done
+
+Grammar:
+$s \rarr aTb|b$  
+$T \rarr Ta|\lambda$  
