@@ -30,18 +30,18 @@
 		z & (z,x) & (z,y) \\
 	\end{tabular}
 \end{center}
-    
+
 \section{Given sets $A$ and $B$ from problem 3, what is the power set of $B$?}
 $B = \{x,y\}$
 \begin{center}
 	The power set of $B$ is $\{0, \{x\},\{y\}, \{x,y\}\}$
 \end{center}
-    
+
 
 \section{Let $X = \{1,2,3,4,5\}$ and $Y = \{6,7,8,9,10\}$}
 Here at two functions, $g$ and $f$, defined in the following tables, over $X$ and $Y$:
 \begin{center}
-	\begin{tabular}{ |c|c|c|c|c|c| } 
+	\begin{tabular}{ |c|c|c|c|c|c| }
 		\hline
 		g & 6  & 7  & 8  & 9  & 10 \\
 		\hline
@@ -52,7 +52,7 @@ Here at two functions, $g$ and $f$, defined in the following tables, over $X$ an
 		5 & 6  & 6  & 6  & 6  & 6  \\
 		\hline
 	\end{tabular}
-	        
+
 	\begin{tabular}{ |c|c| }
 		\hline
 		n & f(n) \\
@@ -95,7 +95,7 @@ Basis: Consider the equation $a = b$
 	\item Subtract b2 from both sides to obtain $a^2 - b2 = ab - b^2$
 	\item Factor each side, to obtain $(a-b)(a+b) = b(a-b)$
 	\item Divide by $(a - b)$ to get $(a+b) = b$
-	\item Now, let $a = b = 1$.  
+	\item Now, let $a = b = 1$.
 	\item Therefore $2 = 1$, which is what we set out to prove.
 \end{enumerate}
 There seems to be an error here.  What is it?
@@ -107,7 +107,7 @@ There seems to be an error here.  What is it?
 
 \section{Let $(n) = 1 + 2 + ... + n$ be the sum of the first n positive integers. Using PMI, prove that: $S(n) = \frac{1}{2}n(n+1)$}
 
-Prove: 
+Prove:
 $$S(n) = \frac{1}{2}n(n+1)$$
 $$\frac{1}{2}n(n+1) = \frac{n(n+1)}{2}$$
 Base Case:
@@ -115,35 +115,35 @@ $$S(1) = \frac{1(1+1)}{2}$$
 $$\frac{1(1+1)}{2} = 1$$
 $$S(1) = 1$$
 Induction Step:
-    
+
 Assume true for $k$:
 $$S(k) = \frac{k(k+1)}{2}$$
-    
+
 Define $S(k+1)$
 $$S(k+1) = 1 + 2 + 3 + ... + k + (k+1)$$
-    
+
 Add $(k+1)$ to the defined version of $S(k)$
 $$\frac{k(k+1)}{2}+(k+1)$$
 % $$S(k+1) = \frac{k(k+1)}{2}+(k+1)$$
-    
+
 Multiply $(k+1)$ by $\frac{2}{2}$ to equalize the base
 $$\frac{k(k+1)}{2}+\frac{2(k+1)}{2}$$
 % $$\frac{k(k+1)}{2}+(k+1) = \frac{k(k+1)}{2}+\frac{2(k+1)}{2}$$
-    
+
 Evaluate the addition
 $$\frac{k(k+1)+2(k+1)}{2}$$
 % $$\frac{k(k+1)}{2}+\frac{2(k+1)}{2} = \frac{k(k+1)+2(k+1)}{2}$$
-    
+
 Factor the numerator
 $$\frac{(k+1)(k+2)}{2}$$
 % $$\frac{k(k+1)+2(k+1)}{2} = \frac{(k+1)(k+2)}{2}$$
-    
+
 Expand the addition in $(k+2)$
 $$\frac{(k+1)((k+1)+1)}{2}$$
 % $$\frac{(k+1)(k+2)}{2} = \frac{(k+1)((k+1)+1)}{2}$$
-    
+
 Now the inducted equation matches the defined $S(k+1)$
-$$\frac{(k+1)((k+1)+1)}{2} = S(k+1)$$   
+$$\frac{(k+1)((k+1)+1)}{2} = S(k+1)$$
 
 \section{Let $C(n) = 13 + 23 + ... + n^3$ be the sum of the cubes of the first n positive integers. Using PMI, prove that: $C(n)$ has this closed form equivalent:$\frac{1}{4}(n^4+2n^3+n^2)$}
 
@@ -155,13 +155,13 @@ $$C(1)= \frac{1^4+2(1)^3+1^2}{4}$$
 $$\frac{1^4+2(1)^3+1^2}{4} = 1$$
 $$C(1) = 1$$
 Induction Step:
-    
+
 Assume true for some $k$
 $$C(k)=\frac{k^4+2k^3+k^2}{4}$$
-    
+
 Add $(k+1)^3$ for the next step in the equation
 $$\frac{k^4+2k^3+k^2}{4} + (k+1)^3$$
-    
+
 Expand $(k+1)^3$
 $$\frac{k^4+2k^3+k^2}{4} + ((k+1)(k+1)^2)$$
 $$\frac{k^4+2k^3+k^2}{4} + ((k+1)(k^2+2k+1))$$
@@ -184,5 +184,5 @@ $$[...]$$
 $$\frac{k^4+6k^3+13k^2+4k+4}{4} = \frac{k^4+6k^3+13k^2+4k+4}{4}$$
 \\
 We have now proved that the inducted equation works for C(1), C(k), and C(k+1), therefore C(n) has been proven a true equation through mathematical induction
-        
+
 \end{document}

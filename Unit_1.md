@@ -63,6 +63,10 @@
   * [Push Down Automata (Cont.)](#push-down-automata-cont)
 * [Lecture 16](#lecture-16)
   * [Theorem 2.21](#theorem-221)
+* [Lecture 17](#lecture-17)
+  * [From PDAs to CFGs (and back)](#from-pdas-to-cfgs-and-back)
+* [Lecture 18](#lecture-18)
+  * [The Pumping Lemma for Context Free Languages](#the-pumping-lemma-for-context-free-languages)
 
 ## Quotes
 
@@ -266,20 +270,20 @@ Let $Z$ be the set of integers.
 For all $i, j \in Z$, $i eq_{7}j$ if $i - j$ is a multiple of $7$
 
 Proof:
-eq7 is reflexive
-i - i = 0 which is a multiple of 7 (9 - 9 = 0, which is a multiple of 7)
-eq7 is symmetric
-i - j is a multiple of 7 if j - i is multiple of 7
-said another way
-Suppose j - i = p\*7, where p is the multiple.  Then i - j  = (-p)\*7, where the multiple is -p
-2 - 9 = -7, a multiple of 7, so 9 - 2 = 7, a multiple of 7
-eq7 is transitive
-if i, j, k are integers and both (i - j) and (j - k) are multiples of 7,
-then (i - j) + (j - k) = (i - k)
-The sum of two multiples of 7 is a multiple of 7.  So,  (i - k) is a multiple of 7.
-said another way
-i - j = p\*7, j - k -  q\*7
-(i-j) + (j-k) = p\*7 + q\*7
+eq7 is reflexive  
+i - i = 0 which is a multiple of 7 (9 - 9 = 0, which is a multiple of 7)  
+eq7 is symmetric  
+i - j is a multiple of 7 if j - i is multiple of 7  
+said another way  
+Suppose j - i = p\*7, where p is the multiple.  Then i - j  = (-p)\*7, where the   multiple is -p
+2 - 9 = -7, a multiple of 7, so 9 - 2 = 7, a multiple of 7  
+eq7 is transitive  
+if i, j, k are integers and both (i - j) and (j - k) are multiples of 7,  
+then (i - j) + (j - k) = (i - k)  
+The sum of two multiples of 7 is a multiple of 7.  So,  (i - k) is a multiple of 7.  
+said another way  
+i - j = p\*7, j - k -  q\*7  
+(i-j) + (j-k) = p\*7 + q\*7  
 (i-k) = 7(p+q)  so (i-k) is a multiple of 7
 
 Since eq7 is reflexive, symmetric, and transitive, eq7 is an equivalence relation
@@ -537,28 +541,28 @@ P_{k+1} = [P*m^{k}-y((m^{k}-1)/(m-1))]*m-y
 
 ### Theory of Computation (intro)
 
-Alphabet: non-empty finite set of symbols {0,1}
-Sequence: list of objects in some order
-String (over an alphabet): finite sequence of symbols drawn from some alphabet
-Empty string: a string of length 0 (sometimes written as an epsilon, mostly written as lambda)
-Reverse: if S is a string S^{r} is its reverse:
-    S = 01011
-    S^{r} = 11010
-Concatonation: if x is a string of length m, |x| = m, y is a string of length n, |y| = n, xy is the string of length n+m obtained by appending y to the tail of x.
-    x=0101
-    y=11
-    xy=010111
-String exponentiation: x is a string, x^{k} is the string obtained by appending x to itself k times
-Lexicographic order: "dictionary order"
-ShortLex (string order): length within a lexicographic order
-    E_{1} = {0,1}
-    Shortlex: {0, 1, 00, 01, 10, 11, 000, ...}
-Prefix: x is a string. it is a prefix if z (a string) exists such that xz = y where x, y, z are strings.
-    y = 0101
-    x = 0
-    z = 101
-    (x is a prefix of y)
-Language: set of strings
+* Alphabet: non-empty finite set of symbols {0,1}  
+* Sequence: list of objects in some order  
+* String (over an alphabet): finite sequence of symbols drawn from some alphabet  
+* Empty string: a string of length 0 (sometimes written as an epsilon, mostly written as lambda)  
+* Reverse: if S is a string S^{r} is its reverse:
+  * S = 01011  
+  * S^{r} = 11010  
+* Concatonation: if x is a string of length m, |x| = m, y is a string of length n, |y| = n, xy is the string of length n+m obtained by appending y to the tail of x.
+  * x=0101
+  * y=11
+  * xy=010111
+* String exponentiation: x is a string, x^{k} is the string obtained by appending x to itself k times
+* Lexicographic order: "dictionary order"
+* ShortLex (string order): length within a lexicographic order
+  * E_{1} = {0,1}
+  * Shortlex: {0, 1, 00, 01, 10, 11, 000, ...}
+* Prefix: x is a string. it is a prefix if z (a string) exists such that xz = y where x, y, z are strings.
+  * y = 0101
+  * x = 0
+  * z = 101
+  * (x is a prefix of y)
+* Language: set of strings
 
 ### Finite State Automata (FSA)
 
@@ -1056,12 +1060,12 @@ Q= Q_1 \cup Q_2\\
 \text{Define } \delta \text{ such that } \forall q \in Q_1, a \in \Sigma_{\lambda}\\
 \delta(q,a)=
 \left\{
-\begin{array}{ll}
-\delta_1(q,a), q \in Q_1 \And q \not\in F_1 \\
-\delta_1(q,a), q \in F_1 \And a \not = \lambda \\
-\delta_1(q,a) \cup \{q_2\}, q \in F_1, and a=\lambda \\
-\delta_2(q,a), q \in Q_2
-\end{array}
+  \begin{array}{ll}
+    \delta_1(q,a), q \in Q_1 \And q \not\in F_1 \\
+    \delta_1(q,a), q \in F_1 \And a \not = \lambda \\
+    \delta_1(q,a) \cup \{q_2\}, q \in F_1, and a=\lambda \\
+    \delta_2(q,a), q \in Q_2
+  \end{array}
 \right.
 \\
 N \text{ is an NFA that recognizes } A \cup B
@@ -1657,3 +1661,197 @@ Not a general proof, but this is an example that shows it can be done
 Grammar:
 $s \rarr aTb|b$  
 $T \rarr Ta|\lambda$  
+
+## Lecture 17
+
+Given a CFG, we are going to generate a PDA
+
+$q_s \rarr q_{\text{loop}} \rarr q_{\text{accept}}$
+
+* $\lambda, \lambda \rarr S\$$
+* $\lambda, A \rarr w$ (rule $A \rarr w$)
+* $a, a \rarr \lambda$ (termninal, $a$)
+* $\lambda, \$ \rarr \lambda$ (pop $\$$)
+
+### From PDAs to CFGs (and back)
+
+Lemma The First (2.21)
+
+* A language is context free if and only if some PDA recognizes it
+
+Lemma The Second (2.27)
+
+* If a PDA recognizes some language, $L$, $L$ is context free
+
+States and Variables
+
+* For each pair of states $p$ and $q$, in $P$, the corresponding grammar $G$, will have a variable $A_{pq}$ ( and associated rules)
+
+$A_{pq}$ generates strings that take PDA form states $p$ to $q$ with stack
+
+* empty at $p$, then empty at $q$ **or**
+* non-empty at $p$ then non-empty at $q$ but with same contents
+
+Recall $\delta$ for a PDA
+
+* ($r_{r+1}, b) \in \delta(r_i, W_{i+1}, a)$
+
+Modify the PDA
+
+1. Single accept state: $q_{\text{accept}}$
+2. Empties stack before accepting
+3. Each transition either
+   1. Pushes a sumbol or pops a symbol
+   2. Does not do both in the same transition
+
+Conventional Transition Function
+
+* PDA can have transitions like this one:
+  * read $a$, pop $z$, push $z$, travel from state $p$ to state $q$
+  * $a,s \rarr z$, as an arc
+  * $(q,z) \in \delta(p,a,s)$, as a transition operation
+
+Modified
+
+1. Repalce each transition that both pops and pushes with two functions
+   1. One that pushes
+   2. One that pops
+2. Replace each transition that neither pops nor pushes with a two transition seuqnce that first pushes then pops an arbitrary symbol
+
+Conseqiuences
+
+* Since stack is empty at the beggining and transitions either push or pop
+  * First move is a push
+  * Last move is a pop
+
+Two Posibilities
+
+* PDA computes string $w$ as it moves from state $p$ to state $q$
+* Possibility 1:
+  * Synbol popped at the end is the symbol pushed at the begginning
+  * stack is empty only at the beggining and end of computation
+* Possibility 2:
+  * Symbol popped at the end of the stack is notht e symbol pushed at the beggining
+  * this means that somewhere during the execution, the stack becomes empty for a little bit
+
+Rule 1 From possibility 1
+
+* Stack is only empty at the beggining and the end of computation
+* $A_{pq} \rarr a A_{rs} b$
+* Where
+  * $a$ is read at the first move
+  * $r$ is the state following $p$
+  * $s$ is the state precedding $q$
+  * $b$ is read at the last move
+
+Rule 2 From Possibility 2
+
+* Stack can be empty mid-stream
+* $A_{pq} \rarr A_{pr}A_{rq}$
+* Where
+  * $r$ is the state where the stack becomes empty
+
+The Construction, Part the First
+
+* The PDA
+  * $P=\{Q,\Sigma, \Gamma, \delta, q_o, \{q_{\text{accept}}\}\}$
+    * The variables in $G$
+      * $V = \{A_{pq} | p, q \in Q\}$, the set of non-start variables in $G$
+      * $S = A_{q_0, q_{\text{accept}}}$
+
+The Construiction, Part 2
+
+1. for $p, q, r, s \in Q, u \in \Gamma, \text{ and } a, b \in \Sigma_{\lambda}$
+    * if $r,u \in \delta (p, a, \delta)$
+      * i.e. in state $p$, read $a$, push $u$, goto $r$)
+    * and $(q, \lambda) \in \delta(s,b,u)$
+      * in state $s$, read $b$, pop $u$, goto $q$
+    * add rule: $A_{pq} \rarr a A_{rs} b$
+
+A crucial Equivalence
+
+* The constriction works if we can show that there is an equivalence between $a_{pq}$ generating string $x$ and $x$ brining $P$ from $p$ with empty stack to $q$ with empty stack
+* an Iff proposition
+* Claim 2.30: If $A_{pq}$ generate string $x$, then $x$ can bring $P$ from $p$ with empty state to $q$ with empty stack
+  * Basis: Derivation has 1 step
+    * A derivation with a single step doesnt do anythihg. This implies a rule whose RHS has no variables $G$ has such a rule: $A_{pp} \rarr \lambda$ (rule of type 3 $\lambda$ takes $P$ from $p$ with empty stack to $p$ with empty stack)
+      * $\lambda,\lambda \rarr \lambda$
+  * Induction Hypothesis
+    * Assume true for derivations of length at most $k$, $k \ge 1$, and prove true for derivations of length $k+1$.
+      * That is, assume that if $A_{pq}$ generates $x$ in $k$ steps, $x$ can bring $P$ from $p$ with empty stack to $q$ with empty stack. Show that this implies the truth of derivations of length $k+1$
+    * Hypothesis Implies
+      * Supposed $A_{pq} \rarr^* x$ in $k+1$ and $y$ is the portion of $x$ that can be generated in $k$ steps.
+      * Rules of Type 1 and Rules of Type 2
+        1. $A_pq \rarr aA_{rs}b (stack empty only at gbeggining and end)
+             * Let y be the portiopn of the string genreated by A_rs, so x = ayb
+             * Because $A_{rs} \rarr^* y$ in $k$ steps by assumption, the IH tells us that $P$ goes from $r$ on empty stack to $s$ on empty staclk
+             * Because A_pq \rarr a A_rs b is a rule of G, there are two trnasitions in P; one for pushing, one for popping:
+               * $(r,u) \in \delta(p, a, \lambda)$ (go from p to r, reading a and pushing u)
+             * thenr eadind string y can bring the pda to s and leave u on the stack (in k steps)
+             * $(q, \lambda) \in delta(s,b,u)$ go from s to q , reading p and popping u
+             * therefore the string x can bring P from p with emoty stack to q with empty stack
+        2. $A_pq \rarr A_{pr}A_{rq}$ (stack becomes empty mid-stream)
+            * If $A_{pq} \rarr x$, then $x$ is composed of $y$ and $z$ such that
+              * $A_{pr} \rarr y$ and $A_{rq} \rarr x$
+            * and each of the derivations occurs in at most $k$ steps, with empty stacks at beggining and end, by hypothesis
+            * therefore $x$ can being $P$ from $p$ with emtpy stack to $q$ with empty stack
+* Claim 2.31: if $x$ can being $P$ from $p$ with empty stack to $q$ with empty stack then $A_{pq}$ generates $x$
+  * Take notes on this later...
+
+Theorem 2.24
+If $A$ is a CFL, there is a number $p$, where if $s$# is any string of length at least $p$, then #s# may be divided:
+$S = U, VxyZ$
+Such that
+
+1. For each $i \ge 0, uv^ixy^iz \in A$
+2. $|vy| \gt 0$
+3. $|vxy| \le p$
+
+## Lecture 18
+
+### The Pumping Lemma for Context Free Languages
+
+Theorem 2.24
+
+UIf $A$ is a context free language, then there is a number $P$, where if $S$ is a string of length at least $P$, then $S$ may be divided into 6 parts.  
+$S = UVXYZ$  
+Satisfying
+
+1. For each $i \ge 0, u v^i x y^i z \in A$ (it can be pumped)
+2. $|vy| \gt 0$ (the length of vy is greater than 0)
+3. $|vxy| \le P$ (the length of vxy is less than or equal to $P$)
+
+Example
+
+Let $B = \{ a^n b^n c^n | n \ge 0\}$  
+Show that $B$ is not context free
+
+By contradiction, assume $B$ is context free.
+
+* $S = a^P b^P c^P \in B$
+* $|S| = 3P \ge P$
+* Since $|S|$ is at least $P$, it may be divided into $S = UVXYZ$
+* By condition 1, $V$ and $Y$ can be pumped
+* By condition 2, $|VY| \gt 0$
+  * Either $V$ of $Y$ is not empty
+* Cases:
+    1. $V$ or $Y$ contains more than 1 type of symbol
+        * e.g.
+          * $V+ab$
+          * $S' = U V^2 X Y^2 Z$
+          * $S' \not \in B$
+    2. Both $V$ and $Y$ contain the same type of symbol
+          * $U V^2 X Y^2 Z$
+          * This cant be in B because you can have the same amount of As and Bs, or Bs and Cs, or As and Cs. This is because we are pumping $V$ and $Y$
+* Only case 1 and case 2 can occur
+* Both lead to a contradiction
+* $B$ is not a contraxt free language
+
+Let $B = \{0^k 1^k 2^k | k \ge 0\}$. We will show that $B$ isn't a CFL.
+
+Pumping Lemma for CFLs: For every CFL $A$, there is a $p$ such that if $S \in A$ and $|s| \ge p$ then $s = uvxyz$ where 
+1. $uv^ixy^iz \in A$ for all $i \ge 0$
+2. $vy \not{=} \epsilon$
+3. $|vxy| \le p$
+
+Informally: All long strings in $A$ are pumpable and stay in $A$.

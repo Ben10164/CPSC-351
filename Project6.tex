@@ -1,0 +1,107 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\title{Project 6}
+\author{Jesse Adams, Dominic Orsi, Ben Puryear}
+\date{November 2nd, 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{ Let $L = \{a^n b^m c^{2n+m} | n, m \ge 0\}$.  Construct a context-free grammar, $G$, that generates $L$.}
+
+Our context free grammar, $G$, that generates $L$, starts with string $S$:
+
+\begin{align*}
+    S & \Rightarrow A B                           \\
+    A & \Rightarrow a A B C C | a A C C | \lambda \\
+    B & \Rightarrow b B C | \lambda               \\
+    C & \Rightarrow c C \lambda
+\end{align*}
+
+\section{Chomsky Normal Form}
+
+\subsection{State the rules for Chomsky Normal Form (CNF).}
+
+\begin{list}{}{A CFG is in CNF if every rule is of the form:}
+    \item $A \Rightarrow BC$
+    \item $A \Rightarrow a$
+    \item $S \Rightarrow \lambda$
+\end{list}
+
+\begin{list}{}{Where:}
+    \item $a \in \Sigma$
+    \item $A, B, C \in V$
+    \item $S$ is the start variable
+\end{list}
+
+\subsection{Convert the following grammar to CNF.}
+
+\begin{align*}
+    S & \Rightarrow aA|ABA \\
+    A & \Rightarrow AA|a   \\
+    B & \Rightarrow AbA|bb
+\end{align*}
+
+\subsubsection{Guarantee Start Variable is only on LHS.}
+
+No action needed
+
+\subsubsection{Eliminate all rules of $A \Rightarrow \lambda$ where $A \not{=} S$.}
+
+No action needed
+
+\subsubsection{Eliminate all unit rules.}
+
+No action needed
+
+\subsubsection{Fix remaining rules.}
+
+Let $U_1 \Rightarrow a$ and $U_2 \Rightarrow b$
+
+\begin{align*}
+    S   & \Rightarrow U_1 A|ABA  \\
+    A   & \Rightarrow AA|a       \\
+    B   & \Rightarrow A U_2 A|bb \\
+    U_1 & \Rightarrow a          \\
+    U_2 & \Rightarrow b
+\end{align*}
+
+Let $B_1 \Rightarrow BA$ and $B_2 \Rightarrow U_2 A$
+
+\begin{align*}
+    S   & \Rightarrow U_1 A | A B_1   \\
+    A   & \Rightarrow A A | a         \\
+    B   & \Rightarrow A B_2 | U_2 U_2 \\
+    B_1 & \Rightarrow B A             \\
+    B_2 & \Rightarrow U_2 A           \\
+    U_1 & \Rightarrow a               \\
+    U_2 & \Rightarrow b
+\end{align*}
+
+This grammar is now in Chomsky Normal Form.
+
+\section{Using Example 2.14, show that the machine, M1 in Figure 2.15 recognizes 0011.}
+
+\begin{center}
+    \begin{tabular}{||c | c | c | c||}
+        \hline
+        Input String & Stack Content & Rule                                & Description                                             \\
+        \hline\hline
+        $\epsilon$   & $\$$          & $\epsilon, \epsilon \Rightarrow \$$ & Input $\epsilon$, pop $\epsilon$ from stack, push $\$$. \\
+        \hline
+        $0$          & $0 \$$        & $0, \epsilon \Rightarrow 0$         & Input $0$, pop $\epsilon$ from stack, push $0$.         \\
+        \hline
+        $0$          & $0 0 \$$      & $0, \epsilon \Rightarrow 0$         & Input $0$, pop $\epsilon$ from stack, push $0$.         \\
+        \hline
+        $1$          & $0 \$$        & $1, 0 \Rightarrow \epsilon$         & Input $1$, pop $0$ from stack, push $\epsilon$.         \\
+        \hline
+        $1$          & $\$$          & $1, 0 \Rightarrow \epsilon$         & Input $1$, pop $0$ from stack, push $\epsilon$.         \\
+        \hline
+        $\epsilon$   &               & $\epsilon, \$ \Rightarrow \epsilon$ & Input $1$, pop $\$$ from stack, push $\epsilon$.        \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\end{document}
