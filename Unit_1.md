@@ -497,7 +497,7 @@ P_{k+1} = [P*m^{k}-y((m^{k}-1)/(m-1))]*m-y
 * ShortLex (string order): length within a lexicographic order
   * E_{1} = {0,1}
   * Shortlex: {0, 1, 00, 01, 10, 11, 000, ...}
-* Prefix: x is a string. It is a prefix if z (a string) exists such that xz = y where x, y, z are strings.
+* Prefix: x is a string. It is a prefix if z (a string) exists such that xz = y where x, y, z are strings
   * y = 0101
   * x = 0
   * z = 101
@@ -895,7 +895,7 @@ Proof:
        1. Let $\delta'(R,a) = \Sigma q \in Q| q \in \delta(r,a)$ for some $r \in R$
           1. Every transition in $N$ generates a set of transitions in $M$
     3. $q_s' = \{q_s\}$
-    4. $F'=\{R \in Q' | R$ contains an accept state pf $N\}$
+    4. $F'=\{R \in Q' | R$ contains an accept state of $N\}$
     5. Lambda transitions
        1. Let $R \subset Q$
        2. $E(R) = \{q | q \text{ can be reached  from } R \text{ by zero or more } \lambda \text{ transitions}\}$
@@ -966,7 +966,7 @@ Proving that Regular languages are closed under concatenation
 
 Technique: Proof by construction
 
-* Build 2 NFA's: N1, N2
+* Build 2 NFAs: N1, N2
   * A=L(N1)
   * B=L(N2)
 * Construct NFA N3
@@ -1100,7 +1100,7 @@ $(a b \cup a )^*$
 
 This will be shown through an example
 
-$a^* b(a \cup b)^* = R\\$
+$a^* b(a \cup b)^* = R$  
 Build a DFA that accepts this language
 
 ![Image Caption 21](Images/Image-21.png)
@@ -1139,7 +1139,7 @@ This is a context free language, because you can't draw the machine
 1. a bab b
 2. a bab bab b
 
-The "pump"ing part is the bab's, in between the a and b
+The *pump*ing part is the bab's, in between the a and b
 
 * S = aa bab baab
   * x = aa
@@ -1430,8 +1430,8 @@ $a^ib^i$, a way to determine if it is valid is by pushing something onto the sta
 * Schematic of PDA
   * State Controller:
     * The state controller controls the reading of the input (as before), but it also controls the stack
-  * The stack: When we read things, we frequently push or pop things into or off the stack
-    * The contents of the top of the stack and the item read will control where we move to
+      * When we read things, we frequently push or pop things into or off the stack
+        * The contents of the top of the stack and the item read will control where we move to
 
 Stack: In PDA, stack space is unlimited because this is a theoretical concept
 
@@ -1543,7 +1543,7 @@ $\lambda, \lambda \rarr \$$ means that if the next input symbol is $\lambda$, an
 
 $x, y \rarr z$:
 
-* $x = w_{i+1}$ (the input symbol
+* $x = w_{i+1}$ (the input symbol)
 * $y = a$ the current stack top
 * $z = b$ the new stack top
 

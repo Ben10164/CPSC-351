@@ -24,3 +24,8 @@ xy
 abbabb
 ababb
 Non-determinizion
+DPDA
+aa
+baab
+babb
+NFAs
