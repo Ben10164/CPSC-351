@@ -1,134 +1,114 @@
 # CPSC 351 <!-- omit from toc -->
 
 * [Quotes](#quotes)
-* [Lecture 1](#lecture-1)
-  * [Fundamental Questions](#fundamental-questions)
-  * [Required Things](#required-things)
-  * [Topics](#topics)
-  * [What he expects of us](#what-he-expects-of-us)
-  * [Late Work](#late-work)
-  * [Other](#other)
-  * [Three parts of "Theory of Computation"](#three-parts-of-theory-of-computation)
-    * [Automata Theory](#automata-theory)
-    * [Computability Theory](#computability-theory)
-  * [Mathematical Notions](#mathematical-notions)
-* [Lecture 2](#lecture-2)
-  * [Definitions](#definitions)
-  * [Basic Proof Syntax](#basic-proof-syntax)
-    * [Types of proofs](#types-of-proofs)
-  * [Proof by IFF](#proof-by-iff)
-  * [Proof by contradiction](#proof-by-contradiction)
-* [Lecture 3](#lecture-3)
-  * [Proof by construction](#proof-by-construction)
-  * [Proof by Mathematical Induction](#proof-by-mathematical-induction)
-  * [Theory of Computation (intro)](#theory-of-computation-intro)
-  * [Finite State Automata (FSA)](#finite-state-automata-fsa)
-* [Lecture 4](#lecture-4)
-  * [Finite State Machine](#finite-state-machine)
-    * [Abstract example](#abstract-example)
-  * [Finite State Machine (cont.)](#finite-state-machine-cont)
-* [Lecture 5](#lecture-5)
-  * [Computation on a FSA](#computation-on-a-fsa)
-    * [Finite State Automata](#finite-state-automata)
-    * [Computation](#computation)
-    * [Regular Language](#regular-language)
-      * [Regular Operations](#regular-operations)
-* [Lecture 6](#lecture-6)
-  * [Regular Operations (cont.)](#regular-operations-cont)
-  * [NonDeterministic Finite Automata (NFA)](#nondeterministic-finite-automata-nfa)
-* [Lecture 7](#lecture-7)
-  * [NFA's continued](#nfas-continued)
-  * [Computational DFA](#computational-dfa)
-  * [Computational NFA](#computational-nfa)
-* [Lecture 8](#lecture-8)
-  * [Corollary 1.40](#corollary-140)
-* [Lecture 9](#lecture-9)
-  * [Regex and Regular Languages](#regex-and-regular-languages)
-    * [Examamples](#examamples)
-  * [Regex Identities](#regex-identities)
-* [Lecture 10](#lecture-10)
-  * [Example](#example)
-  * [Lemma 1.60](#lemma-160)
-* [Lecture 11](#lecture-11)
-  * [Context Free Languages](#context-free-languages)
-    * [Pumping Lemme](#pumping-lemme)
-* [Lecture 12](#lecture-12)
-  * [Context Free Language](#context-free-language)
-* [Lecture 13](#lecture-13)
-  * [Terminology](#terminology)
-  * [Chompsky](#chompsky)
-* [Lecture 14](#lecture-14)
-  * [Push Down Automata](#push-down-automata)
-* [Lecture 15](#lecture-15)
-  * [Push Down Automata (Cont.)](#push-down-automata-cont)
-* [Lecture 16](#lecture-16)
-  * [Theorem 2.21](#theorem-221)
-* [Lecture 17](#lecture-17)
-  * [From PDAs to CFGs (and back)](#from-pdas-to-cfgs-and-back)
-* [Lecture 18](#lecture-18)
-  * [The Pumping Lemma for Context Free Languages](#the-pumping-lemma-for-context-free-languages)
+* [Fundamental Questions](#fundamental-questions)
+* [Required Things](#required-things)
+* [Topics](#topics)
+* [What he expects of us](#what-he-expects-of-us)
+* [Late Work](#late-work)
+* [Other](#other)
+* [Three parts of "Theory of Computation"](#three-parts-of-theory-of-computation)
+  * [Automata Theory](#automata-theory)
+  * [Computability Theory](#computability-theory)
+* [Mathematical Notions](#mathematical-notions)
+* [Definitions](#definitions)
+* [Basic Proof Syntax](#basic-proof-syntax)
+  * [Types of proofs](#types-of-proofs)
+* [Proof by IFF](#proof-by-iff)
+* [Proof by contradiction](#proof-by-contradiction)
+* [Proof by construction](#proof-by-construction)
+* [Proof by Mathematical Induction](#proof-by-mathematical-induction)
+* [Theory of Computation (intro)](#theory-of-computation-intro)
+* [Finite State Automata (FSA)](#finite-state-automata-fsa)
+* [Finite State Machine](#finite-state-machine)
+  * [Abstract example](#abstract-example)
+* [Finite State Machine (cont.)](#finite-state-machine-cont)
+* [Computation on an FSA](#computation-on-an-fsa)
+  * [Finite State Automata](#finite-state-automata)
+  * [Computation](#computation)
+  * [Regular Language](#regular-language)
+    * [Regular Operations 1](#regular-operations-1)
+* [Regular Operations 2](#regular-operations-2)
+* [Non-Deterministic Finite Automata (NFA)](#non-deterministic-finite-automata-nfa)
+* [NFA's continued](#nfas-continued)
+* [Computational DFA](#computational-dfa)
+* [Computational NFA](#computational-nfa)
+* [Corollary 1.40](#corollary-140)
+* [Regex and Regular Languages](#regex-and-regular-languages)
+  * [Examples](#examples)
+* [Regex Identities](#regex-identities)
+* [Example](#example)
+* [Lemma 1.60](#lemma-160)
+* [Context Free Languages](#context-free-languages)
+  * [Pumping Lemma](#pumping-lemma)
+* [Context Free Language](#context-free-language)
+* [Terminology](#terminology)
+* [Chomsky](#chomsky)
+* [Push Down Automata](#push-down-automata)
+* [Push Down Automata (Cont.)](#push-down-automata-cont)
+* [Theorem 2.21](#theorem-221)
+* [From PDA's to CFG's (and back)](#from-pdas-to-cfgs-and-back)
+* [The Pumping Lemma for Context Free Languages](#the-pumping-lemma-for-context-free-languages)
 
 ## Quotes
 
 * "We are all going to die"
 * "That is a provocative question"
-* "We don't know why boys have awful handwriting. Its almost as fascinating as why there are no few women in computer science"
+* "We don't know why boys have awful handwriting. It's almost as fascinating as why there are no few women in computer science"
 * "I get depressed when I am wrong"
 * "Let's talk about pencils"
 * "There aren't any Jews here?"
   * "The word is Ongaloza"
 * "I'm going to die early"
 * "I was the major suck up back in Catholic school"
-  * He would clap chalkboard erasors
+  * He would clap chalkboard erasers
 * "Mexicans eat early"
   * "Happy hour starts at 3"
-* Dominic... You know what i mean?
-  * 'i can read'
-* "Where is he now? dead"
+* Dominic... You know what I mean?
+  * 'I can read'
+* "Where is he now? Dead"
 * the gobble incident
-* "Im ready to gobble"
+* "I'm ready to gobble"
 * "I can't tell you this. Ask me when you are 10 years older"
 * "Let's rob the working class"
-* "theres a disability that 14 year old boys have, where they just laugh uncontrollably... I don't mean to assume theres a problem with your development but..."
+* "there's a disability that 14-year-old boys have, where they just laugh uncontrollably... I don't mean to assume there's a problem with your development but..."
   * "I loved it then. I haven't been happy since then"
-* "I was a coach for a basketball team. we lost every game. i was fired"
+* "I was a coach for a basketball team. We lost every game. I was fired"
 * "I was a prison guard"
   * "Teaching this class is like being a prison guard again"
 * that time he got unnaturally angry at a random kid walking into getting his backpack
 * "I should call in a drone strike"
-* "let me watch. i want to watch"
+* "let me watch. I want to watch"
 * "women are super stretchy"
 * "my wife is much stretchier"
-* "ben, are you stretchy in other ways?"
-* "what a glorious thing, the youth"
-
-## Lecture 1
+* "Ben, are you stretchy in other ways?"
+* "What a glorious thing, the youth"
 
 * Everything will be on his website besides grades
   * Website: <www.paolodepalma.com>
 
 * the fundamentals of this class are based on Allan Turing
 
-### Fundamental Questions
+## Fundamental Questions
 
 * What are the capabilities and limitations of computers/
 * what is a computational model?
-* what is computability?
+* What is computability?
 * What is a formal language?
 * How are formal languages related to computational models?
 * Are there problems are that are unsolvable?
   * Yes
 
-### Required Things
+## Required Things
 
 * Textbook (See site)
 * Lots of time, patience, distraction-free environment
 * *Pen and paper*
 * No electronic gadgetry of any sort. "These prevent you from being a full participant in the class"
 
-### Topics
+## Topics
 
-* Chapter 0: Preliminaries (1.5  weeks)  
+* Chapter 0: Preliminaries (1.5 weeks)  
   * 0.1 Automata, Computability, and ComplexityPreliminaries  
   * 0.2 Strings and languages  
   * 0.4 Types of proofs  
@@ -146,7 +126,7 @@
   * 3.1 Turning Machines  
   * 3.2 Variants of Turing Machines  
   * 3.3 The Definition of Algorithm  
-* Chapter 4: Decidability  (2 weeks)  
+* Chapter 4: Decidability (2 weeks)  
   * 4.1 Decidable Languages  
   * 4.2 Undecidability
 * Chapter 5: Reducibility (2 weeks)  
@@ -154,7 +134,7 @@
   * 5.2 The Post Correspondence Problem  
   * 5.3 Mapping Reducibility  
 
-### What he expects of us
+## What he expects of us
 
 * To have fun
 * To be dazzled by the beauty of computational theory
@@ -163,26 +143,26 @@
   * Take a bike ride
   * Call your parents
 
-### Late Work
+## Late Work
 
 * Assignments are due on the date posted
 * You may resubmit graded problem sets for a higher grade. These must have a score of 70% or higher
-* The protocol is to appear at my office hours by Friday after the problem set was returned, with the prepaired problems
+* The protocol is to appear at my office hours by Friday after the problem set was returned, with the prepared problems
 
-### Other
+## Other
 
 * Quizzes once a week. (14 of them, total 5% of grade)
 * **Use LaTeX to get extra credit!**
 * Calendar
-* Every sunday the calender is updated for the following week
+* Every Sunday the calendar is updated for the following week
 
-### Three parts of "Theory of Computation"
+## Three parts of "Theory of Computation"
 
 1. Automata Theory
-2. Compatability Theory
+2. Compatibility Theory
 3. Complexity Theory
 
-#### Automata Theory
+### Automata Theory
 
 Definition and properties of mathematical models of computation
 
@@ -190,7 +170,7 @@ Three major models:
 
 1. Finite State Automata
     * Regular languages
-    * Regular Grammars (and regular expressins)
+    * Regular Grammars (and regular expressions)
 
 2. Push down automata
    * Context Free Languages
@@ -202,11 +182,11 @@ Three major models:
 
 Another View:
 
-* FSAs are computing models with no memory
-* PDAs are computing models with stack memory
-* TMs are computing models with infinite memory
+* FSA's are computing models with no memory
+* PDA's are computing models with stack memory
+* TM's are computing models with infinite memory
 
-#### Computability Theory
+### Computability Theory
 
 Given a Turing Machine:
 
@@ -222,7 +202,7 @@ Given a Turing Machine:
 
 This course is overwhelmingly about automata theory with an excursion into computability theory
 
-### Mathematical Notions
+## Mathematical Notions
 
 * Sets and operations on sets
   * Definition
@@ -243,7 +223,7 @@ This course is overwhelmingly about automata theory with an excursion into compu
 * Range
 * Edges & Vertices
 * Degree of a Vertex
-* Cycle, connectied graph
+* Cycle, connected graph
 * Function Types
   * Injective
     * one-to-one function
@@ -259,9 +239,9 @@ Predicate or Property: Function whose range is ${T,F}$
 Binary Relations
 
 * A binary relation`R`
-  1. is *reflective* if for every x in the domain, xRx -> T
+  1. is *reflective* if for every x in the domain, xRx → T
   1. is symmetric if for every x and y in the domain, xRy implies yRx
-  1. is transitive if for evert x, y, and z in the domain, xRy and yRz implies xRz
+  1. is transitive if for every x, y, and z in the domain, xRy and yRz implies xRz
 * A equivalence relation in R is an equivalence relation if R satisfies 1, 2, 3
 
 Relation Example:  
@@ -275,26 +255,25 @@ i - i = 0 which is a multiple of 7 (9 - 9 = 0, which is a multiple of 7)
 eq7 is symmetric  
 i - j is a multiple of 7 if j - i is multiple of 7  
 said another way  
-Suppose j - i = p\*7, where p is the multiple.  Then i - j  = (-p)\*7, where the   multiple is -p
+Suppose j - i = p\*7, where p is the multiple.  Then i - j = (-p)\*7, where the multiple is -p
 2 - 9 = -7, a multiple of 7, so 9 - 2 = 7, a multiple of 7  
 eq7 is transitive  
 if i, j, k are integers and both (i - j) and (j - k) are multiples of 7,  
 then (i - j) + (j - k) = (i - k)  
-The sum of two multiples of 7 is a multiple of 7.  So,  (i - k) is a multiple of 7.  
-said another way  
-i - j = p\*7, j - k -  q\*7  
+The sum of two multiples of 7 is a multiple of 7.  So, (i - k) is a multiple of 7.  
+Said another way:  
+i - j = p\*7, j - k - q\*7  
 (i-j) + (j-k) = p\*7 + q\*7  
-(i-k) = 7(p+q)  so (i-k) is a multiple of 7
+(i-k) = 7(p+q)  
+so (i-k) is a multiple of 7
 
 Since eq7 is reflexive, symmetric, and transitive, eq7 is an equivalence relation
-
-## Lecture 2
 
 Assignment due a week from today (Thursday):
 
 * In class, or during office hours
 
-### Definitions
+## Definitions
 
 * Definition
   * Precise description of the objects and notions in use
@@ -320,7 +299,7 @@ Assignment due a week from today (Thursday):
     * Q only if P
     * Q if P
 
-### Basic Proof Syntax
+## Basic Proof Syntax
 
 $$
 P,Q\newline
@@ -356,18 +335,16 @@ $$
   * $P \implies Q \And Q \implies P$
     * (P implies Q and Q implies P)
 
-#### Types of proofs
+### Types of proofs
 
-* iff (if an only if) $\iff$
+* IFF (if an only if) $\iff$
 * Contradiction
-* PmI
+* PMI
 * Construction
 
-### Proof by IFF
+## Proof by IFF
 
 Theorem: For any two Sets, A, B, complement of A union b implies com A n com B
-
-this is an attempt at latex. I was not fast enough so i am now just formatting it
 
 ```latex
 pf
@@ -395,7 +372,7 @@ by def of complement
 since step 1 and step 2, we prove the theorem
 ```
 
-### Proof by contradiction
+## Proof by contradiction
 
 ```latex
 assume that the thing you are proving is false, then you draw a series of correct implications, it will lead to a complication (something that is not true)
@@ -451,14 +428,12 @@ root 2 is irrational
 Assumption that \sqrt 2 is rational led to a contradiction, so \sqrt 2 is irrational
 ```
 
-## Lecture 3
-
 Little quiz on Thursday
 
-### Proof by construction
+## Proof by construction
 
 By some theorem, it asserts that some object exists
-the proof is a step by step instruction for how to actually define this project
+the proof is a step-by-step instruction for how to actually define this project
 This type of proof is very rare
 
 e.g.
@@ -483,13 +458,13 @@ b = the edges between opposite vertices
 b = {(i, i + floor(n/2)) for 0 <= i <= floor(n/2) - 1}
 ```
 
-### Proof by Mathematical Induction
+## Proof by Mathematical Induction
 
 * Why do we do this?
   * When working with an infinite set
 * two parts: base case, and induction/hypothesis
   * we want to make a close-form formula that proves an infinite set
-* we make this induction hypothesis, similarly to dominos
+* we make this induction hypothesis, similarly to dominoes
 * true for k, and true for k + 1
 
 ```latex
@@ -539,37 +514,37 @@ P_{k+1} = [P*m^{k}-y((m^{k}-1)/(m-1))]*m-y
         = what we wanted to show!
 ```
 
-### Theory of Computation (intro)
+## Theory of Computation (intro)
 
 * Alphabet: non-empty finite set of symbols {0,1}  
 * Sequence: list of objects in some order  
 * String (over an alphabet): finite sequence of symbols drawn from some alphabet  
 * Empty string: a string of length 0 (sometimes written as an epsilon, mostly written as lambda)  
-* Reverse: if S is a string S^{r} is its reverse:
+* Reverse: if S is a string $S^{r}$ is its reverse:
   * S = 01011  
-  * S^{r} = 11010  
-* Concatonation: if x is a string of length m, |x| = m, y is a string of length n, |y| = n, xy is the string of length n+m obtained by appending y to the tail of x.
+  * $S^{r}$ = 11010  
+* Concatenation: if x is a string of length m, |x| = m, y is a string of length n, |y| = n, xy is the string of length n+m obtained by appending y to the tail of x.
   * x=0101
   * y=11
   * xy=010111
-* String exponentiation: x is a string, x^{k} is the string obtained by appending x to itself k times
+* String exponentiation: x is a string, $x^{k}$ is the string obtained by appending x to itself k times
 * Lexicographic order: "dictionary order"
 * ShortLex (string order): length within a lexicographic order
   * E_{1} = {0,1}
   * Shortlex: {0, 1, 00, 01, 10, 11, 000, ...}
-* Prefix: x is a string. it is a prefix if z (a string) exists such that xz = y where x, y, z are strings.
+* Prefix: x is a string. It is a prefix if z (a string) exists such that xz = y where x, y, z are strings.
   * y = 0101
   * x = 0
   * z = 101
   * (x is a prefix of y)
 * Language: set of strings
 
-### Finite State Automata (FSA)
+## Finite State Automata (FSA)
 
 These are very abstract devices
 
 Imagine there is a door, and a pad to go in, and out.
-the store will behave differently depending on which pad they go in.
+The store will behave differently depending on which pad they go in.
 we want to model that door
 front pad detects a person and opens the door
 back door holds an already open door
@@ -579,7 +554,7 @@ FSA has two states:
 1. Closed State
 2. Open State
 
-Detects Signals:
+Detect Signals:
 
 * R
   * Something on the rear pad
@@ -598,9 +573,7 @@ Open:
 * stays open in F, R, B
 * closes on N
 
-## Lecture 4
-
-### Finite State Machine
+## Finite State Machine
 
 It ONLY knows what state it is in
 
@@ -630,11 +603,11 @@ Continuing the pad/store example
     * Open:
       * Close
 
-#### Abstract example
+### Abstract example
 
 m1 (for machine 1)
 
-![Image Caption](Images/Image-1.png)
+![Image Caption 1](Images/Image-1.png)
 
 an FSA is a 5-tuple
 
@@ -644,11 +617,11 @@ an FSA is a 5-tuple
   * A finite set called "alphabet"
 * $\Delta$
   * A function: $\delta Q \times \Sigma \Rarr Q$
-    * Cartisian product, "Q cross Sigma"
+    * Cartesian product, "Q cross Sigma"
 * $Q_{s}$
   * $Q_{s} \epsilon Q$ called "start state"
 * $F \subseteq Q$
-  * A propper subset of Q
+  * A proper subset of Q
 
 $
 m_1
@@ -668,7 +641,7 @@ $\delta$
 A language is a set of strings
 A string is a sequence of symbols
 
-### Finite State Machine (cont.)
+## Finite State Machine (cont.)
 
 $\Sigma$ is a finite state called "Alphabet"
 
@@ -683,13 +656,11 @@ let $\Sigma = \{0, 1, 2\}$
 $\implies \Sigma^*$ is any seq of $\lambda, 0, 1, 2$  
 $A=L(m_2) \{w|w \in \Sigma^*$ and the sum of the elements of $w$ is a multiple of 3$\}$
 
-![Image Caption](Images/Image-2.png)
+![Image Caption 2](Images/Image-2.png)
 
-## Lecture 5
+## Computation on an FSA
 
-### Computation on a FSA
-
-#### Finite State Automata
+### Finite State Automata
 
 Let $m = (q_1, \Sigma, \delta, q_s, F)$ be an FSA  
 Let $w= w_1, w_2, ..., w_n$ be a string where each $w_i \in \Sigma$  
@@ -700,27 +671,27 @@ then $m$ accepts (recognizes) $w$ if a sequence of states: $r_0, r_1, ..., r_n$ 
    * w i +1 is the next letter in the sequence, and r_{i+1} is also next in the sequence
 3. $r_n \in F$
 
-This basically means, "is there a path in the FSA, where if you exhaust an input, you'll be at the end of the FSA
+This basically means, "is there a path in the FSA, where if you exhaust an input, you'll be at the end of the FSA"
 
-#### Computation
+### Computation
 
 Def: An action of an FSA over a string meeting the three conditions
 
 Languages;
 
 * FSA (DFA)
-  * There is a machine, and a set of strings that are put together in a particular kind of way that cna be recognized by an FSA.
-  * a collection of strings recognized by an FSA is called a language
-  * the col of all strings recognized by all FSAs are referred to as "regular languages"
+  * There is a machine, and a set of strings that are put together in a particular kind of way that can be recognized by an FSA.
+  * A collection of strings recognized by an FSA is called a language
+  * the col of all strings recognized by all FSA's are referred to as "regular languages"
   * >Regular expressions are regular languages
 * Push Down Automata
   * An FSA with a stack
   * >Context free language
 * Turing Machine
-  * A pushDown automata with infinite memory
+  * A push down automata with infinite memory
   * Recursively Enumerable
 
-#### Regular Language
+### Regular Language
 
 1. A language over an alphabet is a subset of $\Sigma^{*}$
 2. Language of a machine $m$ is the set of strings the machine accepts
@@ -741,16 +712,16 @@ $\text{in } q_o, 0 \Rarr q_e$
 $\text{in } q_e, 1 \Rarr q_e$  
 $\text{in } q_o, 1 \Rarr q_o$  
 
-![Image Caption](Images\Image-3.png)
+![Image Caption 3](Images\Image-3.png)
 
 $(Q, \Sigma, \delta, q_s, F)$  
 Lets set $q_s$ to be $q_e$
 
 * the set of integers are closed under `+, -, *` because these take in and return integers always
-* An algebra is a collection of elements and a set of opperations on those elements (think linear algebra)
+* An algebra is a collection of elements and a set of operations on those elements (think linear algebra)
   * We want to define the algebra of regular languages
 
-##### Regular Operations
+#### Regular Operations 1
 
 Let $A, B$ be regular languages (a set of strings that is accepted by an FSA)
 
@@ -774,7 +745,7 @@ $
 Theorem 1.25  
 The class of regular languages is closed under union
 
-![Image Caption](Images\Image-4.png)
+![Image Caption 4](Images\Image-4.png)
 $
 \delta(q_1, q_2) \rarr q_2\\
 \delta((r_1,r_2),a) = \delta_1(r_1,a), \delta_2(r_2,a)
@@ -797,21 +768,19 @@ Proof:
    5. $F$ is a set of tuples in which either element is an accept state of $m_1$ or $m_2$
       1. $F=\{(r_1,r_2) | r_1 \in F_1$ or $r_2 \in F_2\}$
 
-## Lecture 6
-
-### Regular Operations (cont.)
+## Regular Operations 2
 
 Theorem 1.26  
 The class of regular languages is closed under concatenation  
-(Closed means that is an operation between multiple members of a language, the result is still contained in the language)
+(Closed means that it is an operation between multiple members of a language, the result is still contained in the language)
 
 $m_1$: even 0s  
 $m_2$: only three 1s
 
-![Image Caption](Images\Image-5.png)
-![Image Caption](Images\Image-6.png)
+![Image Caption 5](Images\Image-5.png)
+![Image Caption 6](Images\Image-6.png)
 
-### NonDeterministic Finite Automata (NFA)
+## Non-Deterministic Finite Automata (NFA)
 
 DFA: Given a state and symbol, it can go to a specific state
 
@@ -826,13 +795,13 @@ NFA: $Q$ X $\Sigma$ to $P(Q)$ (power set of Q)
 
 $\delta$ in an NFA:
 
-![Image Caption](Images\Image-7.png)
+![Image Caption 7](Images\Image-7.png)
 
-![Image Caption](Images\Image-8.png)
+![Image Caption 8](Images\Image-8.png)
 
 $\{\{a,b\}^*bb\}=L$
 
-![Image Caption](Images\Image-9.png)
+![Image Caption 9](Images\Image-9.png)
 
 abbabb
 
@@ -849,34 +818,32 @@ $$
 
 This also works!
 
-![Image Caption](Images\Image-10.png)
+![Image Caption 10](Images\Image-10.png)
 
-non-determinizion: the input doesnt determin functionally where we are going to go
+Non-determinizion: the input doesn't determine functionally where we are going to go
 
 As a fork: ababb
 
 When there is a fork, you instantaneously go in both directions
 
-![Image Caption](Images\Image-11.png)
+![Image Caption 11](Images\Image-11.png)
 
 $\lambda (\epsilon)$ transition (lambda, epsilon)  
 $\delta : Q$ X $\Sigma \rarr Q$
 >Since sigma is a set and contains an empty element, one possible input is lambda (the empty string)
 
-![Image Caption](Images\Image-12.png)
+![Image Caption 12](Images\Image-12.png)
 
 010110 (Figure 1.29)
 
-![Image Caption](Images\Image-13.png)
+![Image Caption 13](Images\Image-13.png)
 
-## Lecture 7
-
-### NFA's continued
+## NFA's continued
 
 $N_2: \Sigma=\{0,1\}$  
 Language: all strings over sigma that contain a 1 in the third position from the end  
 
-![Image Caption](Images\Image-14.png)
+![Image Caption 14](Images\Image-14.png)
 
 Formal definition of an NFA:
 
@@ -899,9 +866,9 @@ $\delta$
 | $q_3$ | $\phi$    | $\{q_4\}$     | $\phi$    |
 | $q_4$ | $\{q_4\}$ | $\{q_4\}$     | $\phi$    |
 
-![Image Caption](Images\Image-15.png)
+![Image Caption 15](Images\Image-15.png)
 
-### Computational DFA
+## Computational DFA
 
 m accepts w if a sequence of states $r_0,r_1, ... , r_n$ in $Q$ exist with these 3 conditions
 
@@ -909,7 +876,7 @@ m accepts w if a sequence of states $r_0,r_1, ... , r_n$ in $Q$ exist with these
 2. $\delta(r_i, w_{i+1}) = r_{i+1}$ for $i = 0, 1, ..., n-1$
 3. $r_n \in F$
 
-### Computational NFA
+## Computational NFA
 
 1. the same
 2. $r_{i+1} \in \delta(r_i, w_{i+1})$ for $i = 0, ... , n-1$
@@ -933,18 +900,16 @@ Proof:
        1. Let $\delta'(R,a) = \Sigma q \in Q| q \in \delta(r,a)$ for some $r \in R$
           1. Every transition in $N$ generates a set of transitions in $M$
     3. $q_s' = \{q_s\}$
-    4. $F'=\{R \in Q' | R$ contains an acce[t state pf $N\}$
+    4. $F'=\{R \in Q' | R$ contains an accept state pf $N\}$
     5. Lambda transitions
        1. Let $R \subset Q$
        2. $E(R) = \{q | q \text{ can be reached  from } R \text{ by zero or more } \lambda \text{ transitions}\}$
           1. EX:
-             * ![Image Caption](Images\Image-16.png)
+             * ![Image Caption 16](Images\Image-16.png)
              1. $E(\delta(1,b)) = E(\{2\}) = \{2\}$
              1. $E(\delta (1,a)) = E(\phi) = \phi$
              1. $E(\delta (3,a))=E(\{1\})=\{1,3\}$
              1. $\delta'(R,a)=\{q \in Q | q \in \delta(r,a) \text{ for some } r \in R\}$
-
-## Lecture 8
 
 Theorem 1.39
 
@@ -965,31 +930,31 @@ Proof:
        1. Let $\delta'(R,a) = \Sigma q \in Q| q \in \delta(r,a)$ for some $r \in R$
           1. Every transition in $N$ generates a set of transitions in $M$
     3. $q_s' = \{q_s\}$
-    4. $F'=\{R \in Q' | R$ contains an acce[t state pf $N\}$
+    4. $F'=\{R \in Q' | R$ contains an accept state pf $N\}$
     5. Lambda transitions
        1. Let $R \subset Q$
        2. $E(R) = \{q | q \text{ can be reached  from } R \text{ by zero or more } \lambda \text{ transitions}\}$
           1. EX:
-             * ![Image Caption](Images\Image-16.png)
+             * ![Image Caption 16](Images\Image-16.png)
              1. $E(\delta(1,b)) = E(\{2\}) = \{2\}$
              1. $E(\delta (1,a)) = E(\phi) = \phi$
              1. $E(\delta (3,a))=E(\{1\})=\{1,3\}$
              1. $\delta'(R,a)=\{q \in Q | q \in \delta(r,a) \text{ for some } r \in R\}$
              1. $\delta'(r,a) = \{q \in Q | q \in E(\delta(r,a)) \text{ for some } r \in R\}$
 
-### Corollary 1.40
+## Corollary 1.40
 
 A language is regular if and only if an NFA recognizes it.
 
 > Proof:  
-> A regular languages is defined as something recognized by a DFA  
+> A regular language is defined as something recognized by a DFA  
 > And since every DFA has an NFA...
 
 Example
 
 $N_4$
 
-![Image Caption](Images\Image-17.png)
+![Image Caption 17](Images\Image-17.png)
 
 $
 Q=\{1,2,3\} \\
@@ -1025,11 +990,9 @@ $\delta'(Ra) = \{q \in Q|q \in E(\delta(r,a)) \text{ for some } r \in R\}$
    1. $E(\delta(\{2,3\},a))\rarr=E(\delta(2,a)\cup\delta(3,a))=E(\{2,3\}\cup\{1,3\})=\{1,2,3\}$
    2. $E(\delta(\{2,3\},b))=E(\delta(2,b)\cup\delta(3,b))=E(\{3\}\cup\phi\})=\{3\}$
 
-![Image Caption](Images/Image-18.png)
+![Image Caption 18](Images/Image-18.png)
 
 b: \{2\}\cup\{3\}\phi\rarr \{2,3\}
-
-## Lecture 9
 
 Proving that Regular languages are closed under concatenation
 
@@ -1038,13 +1001,13 @@ Proving that Regular languages are closed under concatenation
 
 Technique: Proof by construction
 
-* Build 2 NFAs N1, N2
+* Build 2 NFA's: N1, N2
   * A=L(N1)
   * B=L(N2)
 * Construct NFA N3
   * Use N1 to recognize A
   * Use N2 to recognize B
-* "Since this NFA recognizes the concatenation of two regular languages, then I will have proven that regular langauges are closed under concatenation"
+* "Since this NFA recognizes the concatenation of two regular languages, then I will have proven that regular languages are closed under concatenation"
 
 Proof:
 
@@ -1071,7 +1034,7 @@ Q= Q_1 \cup Q_2\\
 N \text{ is an NFA that recognizes } A \cup B
 $
 
-### Regex and Regular Languages
+## Regex and Regular Languages
 
 Using Regular Operations to build regular expression
 
@@ -1089,14 +1052,14 @@ Def: $R$ is a Regular Expression if $R$ is:
 5. $R_1 \cdot R_2)$ where $R_1$ and $R_2$ are Regular Expressions
 6. $(R_1)^*$ where $R_1$ is a Regular Expression
 
-Def: RegEx
+Def: Regex
 
 * if $R$ is a Regular Expression, $R^{+} = RR^*$
 * if $R$ is a Regular Expression, $L(R)$ is the language that $R$ describes
 
-![Image Caption](Images/Image-19.png)
+![Image Caption 19](Images/Image-19.png)
 
-#### Examamples
+### Examples
 
 Let $\Sigma = \{0,1\}$
 
@@ -1104,12 +1067,10 @@ Let $\Sigma = \{0,1\}$
 1. $1^* (0 1^+)^* = \{w | \text{ every 0 is followed by at least one 1}\}$
 1. $0\Sigma^*0\cup1 \Sigma^* 1\cup 0 \cup 1 = \{w | w \text{ starts and ends with the same symbol, and can't be empty}\}$
 
-### Regex Identities
+## Regex Identities
 
 1. $1^* \phi = \phi$
 2. $\phi^* =\{\lambda\}$
-
-## Lecture 10
 
 > Theorem 1.54:  
 > A language is regular if and only if it can be described by a regular expression.
@@ -1121,7 +1082,7 @@ Let $\Sigma = \{0,1\}$
 
 $R$ is a regex if:
 
-1\. 'a' (any character)
+1\. $'a'$ (any character)
 
 > $R$ is a regex if $R$ is 'a' for some 'a' $\in \Sigma$
 > NFA, $N$, such that $L(N) = L(R)$
@@ -1135,7 +1096,7 @@ $R$ is a regex if:
 2\. $\lambda$
 
 > $R$ is a regex if $L(R) = \lambda$
-> $\rarr$ then $L(R) = \{\lambda\}
+> $\rarr$ then $L(R) = \{\lambda\}$
 > > $Q=\{1\}$
 > > $\Sigma = \{\lambda\}$
 > > $q_s = 1$
@@ -1161,57 +1122,54 @@ $R$ is a regex if:
 
 > Proof is very similar to the existing proof for kleene star
 
-### Example
+## Example
 
 $(a b \cup a )^*$
 
-![Image Caption](Images/Image-20.png)
+![Image Caption 0](Images/Image-20.png)
 
-### Lemma 1.60
+## Lemma 1.60
 
 > Lemma 1.60
 > If a language is regular, it can be described by a regex.
 
 This will be shown through an example
 
-$a^*b(a \cup b)^* = R\\$
+$a^* b(a \cup b)^* = R\\$
 Build a DFA that accepts this language
 
-![Image Caption](Images/Image-21.png)
+![Image Caption 21](Images/Image-21.png)
 
 GNFA:
 
 * No transitions from non-start state to start state
-* No transitions leave the accept state
+* No transitions leave to accept state
 * All states except start and accept are connected
-* "A GNFA is a generalize non-deterministic finite automata, is a DFA with all of the nodes connected."
+* "A GNFA is a generalized non-deterministic finite automata, is a DFA with all the nodes connected."
 
 Now we modify this to be a GNFA
 
 $\phi$ arrows
 
 * delta generates a state
-* we want to add these phoney transitions that don't really do anything
-* so we indicate the non-generation of a state with a $\phi$ symbol
+* we want to add these phony transitions that don't really do anything, so we indicate the non-generation of a state with a $\phi$ symbol
 
-![Image Caption](Images/Image-22.png)
+![Image Caption 22](Images/Image-22.png)
 
-![Image Caption](Images/Image-23.png)
+![Image Caption 23](Images/Image-23.png)1
 
-## Lecture 11
-
-### Context Free Languages
+## Context Free Languages
 
 * Is this language regular
   * $\Sigma = \{a,b\}$
   * $L = \{a^i, b^i \space \forall i \ge 0\}$
   * Nope. Try $aaab \cdot ab$
 
-This is a context free language, because you cant draw the machine
+This is a context free language, because you can't draw the machine
 
-#### Pumping Lemme
+### Pumping Lemma
 
-![Image Caption](Images/Image-24.png)
+![Image Caption 24](Images/Image-24.png)
 
 1. a bab b
 2. a bab bab b
@@ -1228,7 +1186,7 @@ The "pump"ing part is the bab's, in between the a and b
   * so is $xy^iz, i \ge 0$
 
 $S=S_1S_2S_3S_4S_5S_6...S_n\\$
-$S=(q_1)S_1(q_3)S_2(q_20)S_3(q_9)S_4(q_17)S_5(q_9)S_6(q_6)...(q_35)S_n(q_13 \text{[accept]})$
+$S=(q_1) S_1 (q_3) S_2 (q_{20}) S_3 (q_9) S_4 (q_{17}) S_5 (q_9) S_6 (q_6) ... (q_{35}) S_n (q_{13} \text{[accept]})$
 
 * X takes $m$ from $q_1$ to $q_9$
 * y takes $m$ away from $q_9$ and back
@@ -1252,52 +1210,50 @@ Proof:
 * So
   * $\delta(r_i, s_i) = r_{i+1}$ for $1\le i \le n$
     * $|S| = 1$
-      * (1) -> (2) [moves once]
+      * (1) → (2) [moves once]
     * $|S| = 2$
-      * (1) -> (2) -> (3) [moves twice]
+      * (1) → (2) → (3) [moves twice]
     * $|n| = n+1$ states
-    * $n \ge p#
+    * $n \ge p$
     * $n+1 \ge P+1$
   * Since $P$ is the number of states, a sequence of $P+1$ states requires that $2$ of the $P+1$ states must be the same
-    * This is asserted by the pigeon hole principal
+    * This is asserted by the pigeonhole principal
       * If you have three pigeons, and two houses, there must be at least two pigeons living with each other
   * Call these $r_j$ and $r_l$ (the two that are the same)
   * Because $r_l$ occurs among the first $P+1$ states in the sequence starting at $r_1$, we have $l \le P+1$
   * Now let
     * $x = S_1, ... S_{j-1}$
     * $y = S_j, ... S_{l-1}$
-    * Z=S_l, ... S_n$
+    * $Z=S_l, ... S_n$
   * Since ...
     * $x$ takes $m$ from $r_1$ to $r_j$
     * $y$ takes $m$ from $r_j$ to $r_j$
-    * #z$ takes $m$ from $r_j$ to $r_{n+1}$
+    * $z$ takes $m$ from $r_j$ to $r_{n+1}$
   * Condition 1 must be true
     * $xy^iz \text{ for } i \ge 0$
   * Condition 2 must be true
-    * Since $j \not = l$, the length of $y$ is greater than 0 ($|y| \gt 0$
+    * Since $j \not = l$, the length of $y$ is greater than 0 ($|y| \gt 0$)
   * Condition 3 must be true
     * Since $y \le P+1$, $l-1 \le P$, then the length of $xy = S_1, ... S_{l-1}$ is $l-1$, $|xy| \le P$
 
-## Lecture 12
+## Context Free Language
 
-### Context Free Language
-
-![Image Caption](Images/Image-25.png)
+![Image Caption 25](Images/Image-25.png)
 
 * Regular Languages
   * DFA
   * NFA
   * Expressed with Regex
 * Context Free Languages
-  * Push down automata (a dfa with stack memory)
+  * Push down automata (a DFA with stack memory)
   * Expressed with Context Free Grammar
 
 Context Free Grammar
 
 * $(V, \Sigma, R, S)$
   * $V$: a finite set of variables
-  * $\Sigma$: a finite set, distjoint from $V$, called "Terminals"
-  * $R$: A finite set of rules of the form $A \rarr W$ where $W \in (V \cup \Sigma)^*
+  * $\Sigma$: a finite set, disjoint from $V$, called "Terminals"
+  * $R$: A finite set of rules of the form $A \rarr W$ where $W \in (V \cup \Sigma)^*$
     * Any sequence of variables and terminals in any order
   * $S$: $S \in V$ called the start variable
 
@@ -1310,19 +1266,17 @@ Example:
   * $S = A$
 
 $S \rarr \text{ NP VP}\\$
-$NP \rarr \text{Pro|Det Nominal}\\$
+$NP \rarr \text{Pro|DET Nominal}\\$
 $VP \rarr \text {V nominal}\\$
 $Pro \rarr \text{I|her|him}\\$
-$Det \rarr \text{a|an|the|possessive adjective}\\$
+$DET \rarr \text{a|an|the|possessive adjective}\\$
 $Nominal \rarr \text{Nominal PP | noun}\\$
-$PP \rarr \text{P noun | P det noun}\\$
-
-## Lecture 13
+$PP \rarr \text{P noun | P DET noun}\\$
 
 Regular Languages has regular expressions, and they have these machines that tell us if it is part of the language (finite state machine)
 
 * CFG play the role of a regular expression
-* Push down automata plays the role of a finite state automata
+* Push down automata plays the role of finite state automata
 * Context free languages are analogous to regular languages
 
 These will generate strings one step more complex than regular languages
@@ -1333,9 +1287,9 @@ $G_3 = (\{s\}, \{a,b\}, R, s)$
 $V=\{s\}, \Sigma=\{a,b\}, S=s$  
 $R = \{ s\rarr asb | ss | \lambda\}$
 
-![Image Caption](Images/Image-26.png)
+![Image Caption 26](Images/Image-26.png)
 
-### Terminology
+## Terminology
 
 * Left most derivation
   * A leftmost derivation is obtained by applying production to the leftmost variable in each step
@@ -1348,20 +1302,20 @@ $R = \{ s\rarr asb | ss | \lambda\}$
     * if $U=V$ or $\exists$ a sequence
       * $U \Rarr U_1 \Rarr U_2 ... U_k = V$
 * Language
-  * Given a grammer $G$
+  * Given a grammar $G$
     * $L(G) = \{w \in \Sigma^*|S \Rarr w\}$
 * Ambiguous
   * A grammar is ambiguous if a string in $L(G)$ has 2 or more leftmost derivations
 
 What is a CFL:
 
-* $a^ib$ is regular (you can come up with a dfa to accept this)
-* $a^ib^i$ is not regular (there is no dfa to accept this) it fails the pumping lemma
+* $a^ib$ is regular (you can come up with a DFA to accept this)
+* $a^ib^i$ is not regular (there is no DFA to accept this) it fails the pumping lemma
 
-### Chompsky
+## Chomsky
 
-* Chompsky normal Form
-  * A context free grammar is in chompsky normal form if every rule is of the form:
+* Chomsky normal Form
+  * A context free grammar is in Chomsky normal form if every rule is of the form:
     * $A \rarr BC$
       * BC is the binary tree part
     * $A \rarr a$
@@ -1374,9 +1328,9 @@ What is a CFL:
 
 Theorem 2.9:
 
-Any Context Free Language can be generated by a Context Free Grammar in Chompsky Normal Form
+Any Context Free Language can be generated by a Context Free Grammar in Chomsky Normal Form
 
-1. $S$ does not appear in the right hand side of any rules
+1. $S$ does not appear in the right-hand side of any rules
    1. $S \rarr ASA$
    2. $S_1 \rarr S_0$
    3. $S_0 \rarr AS_0A$
@@ -1398,14 +1352,12 @@ Any Context Free Language can be generated by a Context Free Grammar in Chompsky
    2. $A \rarr U_1A_1$
    3. $A_1 \rarr U_2A_2$
    4. ...
-   5. $A_k \rarr U_kA_k$
-
-## Lecture 14
+   5. $A_k \rarr U_k A_k$
 
 Continued from last one
 
-* Chompsky normal Form
-  * A context free grammar is in chompsky normal form if every rule is of the form:
+* Chomsky normal Form
+  * A context free grammar is in Chomsky normal form if every rule is of the form:
     * $A \rarr BC$
       * BC is the binary tree part
     * $A \rarr a$
@@ -1444,7 +1396,7 @@ $
        * $S \rarr ASA|aB|a$ (keep the variable, but add a new rule without the value that might be lambda)
        * $A \rarr B|S$
        * $B \rarr b$
-   2. Elimated the thing that pointed to $B$
+   2. Eliminated the thing that pointed to $B$
        * $S_0 \rarr S$
        * $S \rarr ASA|aB|a|SA|AS$
 3. Remove the unit rules
@@ -1488,35 +1440,33 @@ $
     * $A_1 \rarr SA$
     * $B \rarr b$
 
-![Image Caption](Images/Image-27.png)
+![Image Caption 27](Images/Image-27.png)
 
-![Image Caption](Images/Image-28.png)
+![Image Caption 28](Images/Image-28.png)
 
-![Image Caption](Images/Image-29.png)
+![Image Caption 29](Images/Image-29.png)
 
-![Image Caption](Images/Image-30.png)
+![Image Caption 30](Images/Image-30.png)
 
-![Image Caption](Images/Image-31.png)
+![Image Caption 31](Images/Image-31.png)
 
-![Image Caption](Images/Image-32.png)
+![Image Caption 32](Images/Image-32.png)
 
-### Push Down Automata
+## Push Down Automata
 
 Started this basically at the end of class
 
-$a^ib^i$, a way to determin if it is valid is by pushing something onto the stack when they read an a, and then remove it from the stack when it is a b, and if the stack is empty following it, it is valid
+$a^ib^i$, a way to determine if it is valid is by pushing something onto the stack when they read a $a$, and then remove it from the stack when it is a b, and if the stack is empty following it, it is valid5
 
-## Lecture 15
-
-### Push Down Automata (Cont.)
+## Push Down Automata (Cont.)
 
 * Schematic of FSA (Finite State Automata)
   * State Controller: The mechanism that causes the FSA to advance from state to state
 * Schematic of PDA
   * State Controller:
-    * The state controller controlls the reading of the input (as before), but it also controls the stack
+    * The state controller controls the reading of the input (as before), but it also controls the stack
   * The stack: When we read things, we frequently push or pop things into or off the stack
-    * The contents of the top of the stack and the item read will control whaere we move to
+    * The contents of the top of the stack and the item read will control where we move to
 
 Stack: In PDA, stack space is unlimited because this is a theoretical concept
 
@@ -1549,7 +1499,7 @@ Formal Def:
   * $\delta$ are transitions:
     * $Q \times \Sigma_{\lambda} \times \Gamma_{\lambda} \rarr P(Q \times F)$
   * $q_0$ is the start state
-  * $F$ is a subset of Q that is the set of substates ($F \subset Q$)
+  * $F$ is a subset of Q that is the set of sub-states ($F \subset Q$)
 
 Computation of a PDA
 
@@ -1560,10 +1510,10 @@ Computation of a PDA
 
 A computation meets the following conditions:
 
-1. $r_0 = q_0$ (you start where you start), $s_0 = \lambda$ (there is nothing on the stack at the beggining)
+1. $r_0 = q_0$ (you start where you start), $s_0 = \lambda$ (there is nothing on the stack at the beginning)
 2. for $i = 0 ... m-1$, we have $(r_{i+1 }, b) \in \delta (r_i, w_{i+1}, a)$ where $s_i = at$ and $s_{i+1} = bt$ for some $a, b \in \Gamma_{\lambda}, t \in \Gamma_{\lambda}^*$
    1. $(r_{i+1 }, b)$ (push)
-   2. $\delta (r_i, w_{i+1}, a)$ (pop) when performing the delta operation, and the notation has an a in the design, it means that you have popped it
+   2. $\delta (r_i, w_{i+1}, a)$ (pop) when performing the delta operation, and the notation has a $a$ in the design, it means that you have popped it
    3. $at$ (t are the other items on the stack)
    4. $bt$
 3. $r_m \in F$
@@ -1580,17 +1530,15 @@ A computation meets the following conditions:
       3. $r_i$ is the current state
       4. $w_{i+1}$ is the next input symbol
       5. $a$ is the current stack top
-   2. ![Image caption](Images/Image-33.png)
-   3. ![Image caption](Images/Image-34.png)
+   2. ![Image caption 33](Images/Image-33.png)
+   3. ![Image caption 34](Images/Image-34.png)
 6. Operational Rules
    1. $x,y,z$ can be $\lambda$
    2. $x=\lambda$ make the transition without reading
    3. $y=\lambda$ make the transition without reading OR popping the stack
-   4. $z = \lambda$ make the transition without pushing
+   4. $z = \lambda$ make the transition without pushing6
 
-## Lecture 16
-
-Context Free Grammars generate Contex Free Languages
+Context Free Grammars generate Context Free Languages
 
 $\delta$ rules
 
@@ -1613,9 +1561,9 @@ $r_{i+1} \And r_i \in \Sigma$
 
 $x, y, z$ can be $\lambda$
 
-![Image caption](Images/Image-35.png)
+![Image caption 35](Images/Image-35.png)
 
-![Image caption](Images/Image-36.png)
+![Image caption 36](Images/Image-36.png)
 
 if:
 
@@ -1645,13 +1593,13 @@ Now we can build a PDF
 
 in the book $\epsilon$ is used to define $\lambda$
 
-![Image caption](Images/Image-37.png)
+![Image caption 37](Images/Image-37.png)
 
-![Image caption](Images/Image-38.png)
+![Image caption 38](Images/Image-38.png)
 
-### Theorem 2.21
+## Theorem 2.21
 
-A language is contex free if and only if there is a PDA that recognizes it
+A language is context free if and only if there is a PDA that recognizes it
 
 Grammar $\rarr$ PDA  
 PDA $\rarr$ Grammar
@@ -1660,9 +1608,7 @@ Not a general proof, but this is an example that shows it can be done
 
 Grammar:
 $s \rarr aTb|b$  
-$T \rarr Ta|\lambda$  
-
-## Lecture 17
+$T \rarr Ta|\lambda$
 
 Given a CFG, we are going to generate a PDA
 
@@ -1673,7 +1619,7 @@ $q_s \rarr q_{\text{loop}} \rarr q_{\text{accept}}$
 * $a, a \rarr \lambda$ (termninal, $a$)
 * $\lambda, \$ \rarr \lambda$ (pop $\$$)
 
-### From PDAs to CFGs (and back)
+## From PDA's to CFG's (and back)
 
 Lemma The First (2.21)
 
@@ -1805,11 +1751,9 @@ Such that
 
 1. For each $i \ge 0, uv^ixy^iz \in A$
 2. $|vy| \gt 0$
-3. $|vxy| \le p$
+3. $|vxy| \le p$8
 
-## Lecture 18
-
-### The Pumping Lemma for Context Free Languages
+## The Pumping Lemma for Context Free Languages
 
 Theorem 2.24
 
@@ -1849,9 +1793,24 @@ By contradiction, assume $B$ is context free.
 
 Let $B = \{0^k 1^k 2^k | k \ge 0\}$. We will show that $B$ isn't a CFL.
 
-Pumping Lemma for CFLs: For every CFL $A$, there is a $p$ such that if $S \in A$ and $|s| \ge p$ then $s = uvxyz$ where 
+Pumping Lemma for CFLs: For every CFL $A$, there is a $p$ such that if $S \in A$ and $|s| \ge p$ then $s = uvxyz$ where
+
 1. $uv^ixy^iz \in A$ for all $i \ge 0$
 2. $vy \not{=} \epsilon$
 3. $|vxy| \le p$
 
 Informally: All long strings in $A$ are pumpable and stay in $A$.
+
+* $D = \{ww|w \in \{0,1\}^*\}$  
+* $S = 0^P 1 0^P 1 \in D$  
+* $|S| > P$  
+* $0^P 1$
+  * 0000000...00 0 1 0 000000000...001
+  * 0000000 = $u$
+  * 0 = v
+  * 1 = x
+  * 0 = y
+  * 0000...001 = z
+* Pump $v, y$
+  * $0^{P-1} 0^2 1 0^2 0^{P-1} 1
+  * $0^{P+1} 1 0^{P+1} 1$
