@@ -1,7 +1,7 @@
 # CPSC 351 <!-- omit from toc -->
 
 * [DPDA's](#dpdas)
-* [Turring Machines](#turring-machines)
+* [Turing Machines](#turing-machines)
 
 ## DPDA's
 
@@ -15,4 +15,6 @@ Here is a context free language:
 $A = \{a^i b^k c^k | i \neq j \text{ or } j \neq k, k \ge 0\}$  
 $A_c = \{a^i b^i c^i | i \ge 0\}$
 
-## Turring Machines
+## Turing Machines
+
+*Alan Turing: On Computable Numbers*
