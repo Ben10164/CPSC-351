@@ -17,4 +17,10 @@ $A_c = \{a^i b^i c^i | i \ge 0\}$
 
 ## Turing Machines
 
-*Alan Turing: On Computable Numbers*
+Alan Turing: *On Computable Numbers*
+
+TM:
+
+* Controller
+* Read/Write head
+* Infinite tape
