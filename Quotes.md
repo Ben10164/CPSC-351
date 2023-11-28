@@ -31,3 +31,5 @@
 * "my wife is much stretchier"
 * "Ben, are you stretchy in other ways?"
 * "What a glorious thing, the youth"
+* "This part disturbs me"
+* “The D is very very big”
