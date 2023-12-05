@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\title{Project 8}
+\author{Jesse Adams, Dominic Orsi, Ben Puryear\\Section 1}
+\date{December 5th, 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Use the pumping lemma for context-free languages to show that the following language is not context-free:  $\{0^n 1^n 0^n 1^n | n \ge 0\}$.}
+
+Proof: Assume that $L$ is context free. Then by the pumping lemma for CFL, there must be a pumping length $p$ such that if $s$ is a string in the language with a magnitude greater than $p$, then $s$ satisfies the conditions of the pumping lemma.
+
+Let $s = \{0^p 1^p 0^p 1^p\}$. Clearly $|s| \ge p$ as required by the pumping lemma. According to the pumping lemma, $s=uvxyz$ with $|vxy| \ge p$. This means that there are three cases that describe $vxy$.
+
+1. $vxy$ is comprised of all $o$s and s contained entirely within either the first or second string of $0$s since $|vy| > 0$, then either $v$ or $y$ must contain at least one $0$. Now consider $u v^0 x y^0 z$. This forces either the first or second string of $0$s to have at least one fewer $0$ than the other. Thus $u v^0 x y^0 z \notin L$ which is a contradiction of the pumping lemma.
+
+2.$vxy$ is comprised of all $1$s and is contained entirely within either the first or second string of $1$s. By the same reasoning in case 1, we can see a contradiction is derived.
+
+3. $vxy$ is comprised of a mix of $0$s and $1$s. This really describes two cases, where $vxy$ is a string of $0$s followed by a string of $1$s or $vxy$ is a string of $1$s followed by a string of $0$s. Taking the first case as an example, $vxy$ either straddles the first $0-1$ division or the second $0-1$ division. Since $|vxy| \le p$, it follows that pumping either up or down will only affect the substrings immediately adjacent to the division that is straddled. The other two substrings will be unaffected. Thus the length of the straddled substrings will be changed by pumping while the length of the other two will not be. This results in pumping a string that is not in the language and a contradiction is once again derived.
+
+Since for every case, $s$ cannot be pumped. We have a contradiction in the pumping lemma. This makes our original assumption false and we can conclude that $L$ is not context free.
+
+\section{For languages A and B, the perfect shuffle of A and B is the language: \\
+  $\{w | w = a_1 b_1 ... a_m b_m \text{ where } S_1 = a_1 ...  a_m \in A \\
+    \text{ and } S_2 = b_1 ...  b_m \in B, \text{ where each } a_i b_i  \in \Sigma^*\}$}
+
+Notice that $|S_1| = |S_2|$. \\
+Here are two languages: $A = \{0^k 1^k | k \ge 0\},  B = \{a^j b^{3j} | j \ge 0\}$. \\
+Describe the language resulting from their perfect shuffle using set notation. \\
+Hint: To compute a perfect shuffle, set $k$ and $j$ to some reasonable value, giving two strings, $S_1$ and $S_2$.  Write  $S_1$ and $S_2$ on a sheet of paper, one above the other.   Shuffle $A$ and $B$ as defined above. This is the language, $C$, the perfect shuffle of $A$ and $B$.
+\\
+\\
+If we set $k$ = 2 and $j$ = 1, we get:
+
+$S_1 = 0^{(2)} 1^{(2)} = 0011$
+
+$S_2 = a^{(1)} b^{3*(1)} = abbb$
+\\
+This satisfies the condition for a perfect shuffle that $|S_1| = |S_2|$, this value is $m$.
+\\
+Now that we have a valid $S_1$ and $S_2$, we can shuffle them like this:
+
+$C=\{a_i, b_i | 0 \le i \le m \text{ where } a_i \in S_1 \text{ and } b_i \in S_2 \forall i\}$
+
+$a_1 = 0, a_2 = 0, a_3 = 1, a_4 = 1$
+
+$b_1 = a, b_2 = b, b_3 = b, b_4 = b$
+\\
+In this case, for $m = 4$, we will end with: $\{a_1 b_1, a_2 b_2, a_3 b_3, a_4 b_4\}$
+\\
+This results in the set: $C = \{0 a, 0 b, 1 b, 1 b\}$.
+\\
+Because each pairing of $a_i b_i \in \Sigma^*$, we can now define new language is ${0a, 0b, 1b}$.
+\\
+This language can be defined in set notation as $C = \{0a, 0b, 1b\}$
+
+\section{Using the pumping lemma for context free languages, show that the language resulting from the perfect shuffle in problem 2 is not context-free.}
+
+\end{document}
+
+

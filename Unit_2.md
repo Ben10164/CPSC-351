@@ -11,6 +11,7 @@
     * [Decider example](#decider-example)
   * [Elementary Distinctiveness Problem](#elementary-distinctiveness-problem)
 * [The Acceptance Problem](#the-acceptance-problem)
+* [The Halting Problem](#the-halting-problem)
 
 ## DPDA's
 
@@ -310,3 +311,17 @@ Informal proof:
 2. Write a program P that allows P and the integer as input
    * P' checks to see if P is in proper format. If not, go to reject state. You do this all the time. A compiuler chekc sP and creates P'. P' simulates running the underlying machine on w.
    * P' simulates P.
+
+## The Halting Problem
+
+Simple Proof:
+
+* We assume that we do have a program that correctly determins if a program halts or not: lets call it `H`
+* Now lets create `D`, a bigger program that encompasses `H`
+* D returns the opposite of `H`, by running H and returning the opposite
+* What happens when we give `D` its own program
+* If `H` determines halt, `D` will actually run forever
+* If `H` determines forever, `D` will actually halt
+* This contradicts our assumption
+
+This is a problem that cannot be algorithmically solved
