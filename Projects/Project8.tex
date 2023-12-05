@@ -59,6 +59,46 @@ This language can be defined in set notation as $C = \{0a, 0b, 1b\}$
 
 \section{Using the pumping lemma for context free languages, show that the language resulting from the perfect shuffle in problem 2 is not context-free.}
 
+Recall:
+
+$\Sigma = \{0, 1, a, b\}$
+
+$A = \{0^k 1^k | k \ge 0\}$
+
+$B = \{a^j b^{3j} | j \ge 0\}$
+
+$k = 4, j = 2$
+
+$k \ge 4, j = \frac{k}{2}$
+
+$A = 00001111 \rightarrow w$
+
+$B = aabbbbbb \rightarrow v$
+
+$C = 0a0a0b0b1b1b1b1b \rightarrow w_1 v_1, w_2 v_2, ... w_m v_m$
+
+$C = \{w_1 v_1 ... w_m v_m | w \in \{0, 1\}^*, v \in \{a, b\}^*\}$
+\\
+Assume $C$ is context free
+\\
+This means that it must have a pumping length $p$
+
+string $s = w_1 v_1, ... w_p v_p$
+
+$p = 12, k = 6, j = 3, |s| = 24$
+
+$s = uvxyz$
+
+$u v^i x y^i z \in A, i \ge 0$
+
+$0a0a | 0a0b | 0b0b1b | 1b1b1 | b1b1b \rightarrow u | v | x | y | z$
+
+$i = z$
+
+$s = 0a0a0a0b0a0b0b0b1b1b1b11b1b1b1b1b$
+
+There are back-to-back $1$s in this string, meaning that $s \notin C$
+\\
+Since $s \notin C$, $C$ is not context free.
+
 \end{document}
-
-
