@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+
+\title{Project 9}
+\author{Jesse Adams, Dominic Orsi, Ben Puryear\\Section 1}
+\date{December 11th, 2023}
+
+\tolerance=10000
+\emergencystretch=0pt
+\hyphenpenalty=10000
+\hbadness=10000
+\frenchspacing
+
+\begin{document}
+
+\maketitle
+
+\section{Argue that a DFA and a regular expression are equivalent.}
+
+Theorem 1.39:
+
+Every nondeterministic finite automation has an equivalent deterministic finite automation.
+\\
+Lemma 1.55:
+
+If a language is described by a regular language, then it is regular.
+\\
+Theorem 4.5:
+
+$EQ_\text{DFA}$ is a decidable language.
+\\
+Arguing that a DFA and a regular expression are equivalent.
+
+\subsection{Express this problem as a language.}
+
+Define the language as:
+
+$M = \{(D, R) | D \text{ is a DFA and } R \text{ is a regular expression with } L(D) = L(R)\}$
+
+Recall that the proof of theorem 4.5 defines a Turing machine $F$ that decides the language $EQ_\text{DFA} = \{(A, B) | A \text{ and } B \text{ are DFA's and } L(A) = L(B)\}$.
+Then the following Turing machine $T$ decides $M$.
+
+\subsection{Show that it is decidable.}
+
+$ T = \text{ on input } (D, R), \text{ where } D \text{ is a DFA and } R \text{ is a regular expression:}$
+
+\begin{itemize}
+    \item Convert $R$ into a DFA $C_R$ using the algorithm in Lemma 1.55.
+    \item Run Turing machine decider $F$ from Theorem 4.5 on input $(D, C_R)$.
+    \item If $F$ accepts, accept. If $F$ rejects, reject.
+\end{itemize}
+
+\section{Suppose S is the set of all infinite sequences of 0s and 1s. 001010101... is a member of S, for example. Show that S is uncountable.}
+
+Assume $S$ is countable $\Rightarrow \exists \mathit{f}: \mathbb{N} \rightarrow S$ (A bijection)
+
+$n \rightarrow S_n$ \\
+$\mathit{f}(1) = 10011 \dots$ (Pick $1$ at index 1, flip to be $0$) \\
+$\mathit{f}(2) = 01110 \dots$ (Pick $1$ at index 2, flip to be $0$) \\
+$\mathit{f}(3) = 11001 \dots$ (Pick $0$ at index 3, flip to be $1$) \\
+$\dots$ \\
+$\mathit{f}(n)$ \\
+$\dots$ \\
+
+Special sequence $A$, it takes the first digit in the first line, second digit in the second line, third digit in third line and so on, but flips each digit.
+
+$A = 001 \dots$
+
+$A$ being a sequence of $0$s and $1$s is in $S$, but it is never hit by the bijection. \\
+In other words:
+
+$A \in S \text{ but } \forall n \in \mathbb{N}, \mathit{f} \neq A$
+
+\section{Example 3.9 describes a Turing machine, $M$, that decides the language w\#w, where w is any string over $\{0,1\}^*$. Give the sequence of configurations that $M$ produces on input 1\#1.}
+
+$
+    q_1 1\#1 \rightarrow q_6 1X1 \\
+    X q_3 \#1 \rightarrow q_6 X1X1 \\
+    X 1 q_5 1 \rightarrow q_6 \sqcup X1X1 \\
+    X q_6 X 1 \rightarrow q_{\text{reject}} \sqcup X1X1
+$
+
+\section{Write a Python program that simulates the Turing Machine $M_2$.}
+
+See GitHub Classroom submission Q4.py submitted by Ben10164 (Ben Puryear) in the project-9-Ben10164 repository.
+
+\section{We know that if $A \leqq_M B$ and $A$ is undecidable, then $B$ is undecidable. We use this principle to conclude that an important problem in computational theory is undecidable.\\What's the problem?}
+
+\section{State the problem formally for the previous question.}
+
+\section{What theorem did we call the "gloomiest theorem of them all?"}
+
+Rice's theorem.
+
+\end{document}
